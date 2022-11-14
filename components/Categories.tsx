@@ -10,6 +10,7 @@ import { HomeModernIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import CategoryIcons from "./CategoryIcons";
+
 type Props = {};
 
 export default function Categories() {

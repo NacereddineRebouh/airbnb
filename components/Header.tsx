@@ -55,12 +55,7 @@ export default function Header({}: Props) {
                 <GlobeAltIcon className="rounded-full  font-bold cursor-pointer h-4" />
               </div>
             </div>
-            <div
-              className="h-11 border-[1.5px] rounded-full flex items-center justify-center w-[79px] cursor-pointer gap-1 transition-shadow duration-300 hover:shadow-md "
-              onClick={() => {
-                //open menu
-              }}
-            >
+            <div className="h-11 border-[1.5px] rounded-full flex items-center justify-center w-[79px] cursor-pointer gap-1 transition-shadow duration-300 hover:shadow-md ">
               <Bars3Icon className="rounded-full text-gray-700 font-bold cursor-pointer h-6" />
               <UserCircleIcon className="rounded-full text-gray-500 font-bold cursor-pointer h-9" />
             </div>

@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import Head from "next/head";
-import Categories from "../components/Categories";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import "../styles/globals.css";
+import Categories from "../../components/Categories";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import "../../styles/globals.css";
 
 export default function RootLayout({
   children,
@@ -14,6 +14,11 @@ export default function RootLayout({
     <html>
       <head key="Home">
         <title key="sdd">Airbnb</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1"
+        />
+
         {/* <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -26,11 +31,11 @@ export default function RootLayout({
 
       <body>
         {/* Shared Header */}
-        <section id="header" className="sticky top-0 z-20">
+        <header id="header" className="fixed top-0 z-20">
           <Header />
-        </section>
+        </header>
         {/* Shared Category panel */}
-        <section id="category" className="mt-4 sticky top-[80px] z-10 ">
+        <section id="category">
           <Categories />
         </section>
 
@@ -38,8 +43,17 @@ export default function RootLayout({
           <Footer />
         </section>
         {/* Other child pages */}
-        {children}
+        <section className="mt-[200px] mb-20 z-0 mx-auto" id="Content">
+          {children}
+        </section>
       </body>
     </html>
   );
+  // div
+  //     className={
+  //       dettach
+  //         ? "fixed top-[80px] z-10 bg-white"
+  //         : "mt-4 absolute top-[80px] z-10 bg-white"
+  //     }
+  //   >
 }

@@ -37,7 +37,15 @@ module.exports = {
       '4xl': '1954px',
       // => @media (min-width: 1954px) { ... }
     },
-    extend: {},
+    extend: {
+      width: {
+        '100':"30rem",
+        '110':"40rem",
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+            require('tailwind-scrollbar')({ nocompatible: true }),
+            
+           ],
 }

@@ -9,8 +9,8 @@ type Props = {
 
 export default function Card({ source }: Props) {
   return (
-    <div className="relative bg-white rounded-xl text-left grid grid-rows-[2fr,1fr] p-2 cursor-pointer transition-all duration-500 ease-out hover:bg-gray-100 hover:border-[1px] hover:scale-[103%] hover:shadow-lg overflow-visible">
-      <div className=" h-auto w-auto rounded-xl overflow-clip">
+    <div className="relative bg-gray-100/0 rounded-2xl text-left grid grid-rows-[2fr,1fr] p-2 cursor-pointer transition-all duration-500 ease-out hover:bg-gray-100 border-gray-300/0 hover:border-gray-300 border-[1px] hover:scale-[103%] hover:shadow-lg overflow-visible">
+      <div className="h-auto w-auto rounded-xl overflow-clip">
         <Image
           src={source}
           style={{ objectFit: "cover", aspectRatio: 1 / 1 }}

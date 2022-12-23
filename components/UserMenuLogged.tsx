@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import Cookies from "universal-cookie";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 type Props = {};
 
@@ -75,22 +76,24 @@ export default function UserMenuLogged({}: Props) {
                     </Link>
                   )}
                 </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <Link
-                      href={"/login"}
-                      className={`${
+                <Menu.Item disabled>
+                  {({ active, disabled }) => (
+                    <button
+                      onClick={() => console.log("")}
+                      className={` ${
                         active ? "cursor-pointer bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-[10px] text-sm`}
+                      } ${
+                        disabled ? "text-gray-400" : ""
+                      } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
                     >
                       Notifications
-                    </Link>
+                    </button>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
                     <Link
-                      href={"/login"}
+                      href={"/trips"}
                       className={`${
                         active ? "cursor-pointer bg-gray-100" : ""
                       } group flex w-full items-center px-4 py-[10px] text-sm`}
@@ -102,7 +105,7 @@ export default function UserMenuLogged({}: Props) {
                 <Menu.Item>
                   {({ active }) => (
                     <Link
-                      href={"/login"}
+                      href={"/wishlists"}
                       className={`${
                         active ? "cursor-pointer bg-gray-100" : ""
                       } group flex w-full items-center px-4 py-[10px] text-sm`}
@@ -112,68 +115,79 @@ export default function UserMenuLogged({}: Props) {
                   )}
                 </Menu.Item>
               </div>
-              <div className="mt-2">
-                <Menu.Item>
-                  {({ active }) => (
-                    <div
-                      className={`${
-                        active ? "bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-[10px] text-sm font-normal mt-2`}
-                    >
-                      Airbnb your home
-                    </div>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      onClick={() => console.log("")}
-                      className={` ${
-                        active ? "cursor-pointer bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
-                    >
-                      Host an experience
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      onClick={() => console.log("")}
-                      className={` ${
-                        active ? "cursor-pointer bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
-                    >
-                      Account
-                    </button>
-                  )}
-                </Menu.Item>
+              <div>
+                <div className="my-2">
+                  <Menu.Item disabled>
+                    {({ active, disabled }) => (
+                      <button
+                        onClick={() => console.log("")}
+                        className={` ${
+                          active ? "cursor-pointer bg-gray-100" : ""
+                        } ${
+                          disabled ? "text-gray-400" : ""
+                        } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
+                      >
+                        Airbnb your home
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item disabled>
+                    {({ active, disabled }) => (
+                      <button
+                        onClick={() => console.log("")}
+                        className={` ${
+                          active ? "cursor-pointer bg-gray-100" : ""
+                        } ${
+                          disabled ? "text-gray-400" : ""
+                        } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
+                      >
+                        Host an experience
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <Link
+                        href={"/account"}
+                        className={` ${
+                          active ? "cursor-pointer bg-gray-100" : ""
+                        } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
+                      >
+                        Account
+                      </Link>
+                    )}
+                  </Menu.Item>
+                </div>
               </div>
-              <div className="mt-2">
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      onClick={() => console.log("")}
-                      className={` ${
-                        active ? "cursor-pointer bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
-                    >
-                      Help
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      // onClick={() => logOut()}
-                      className={` ${
-                        active ? "cursor-pointer bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
-                    >
-                      Log out
-                    </button>
-                  )}
-                </Menu.Item>
+              <div>
+                <div className="mt-2">
+                  <Menu.Item disabled>
+                    {({ active, disabled }) => (
+                      <button
+                        onClick={() => console.log("")}
+                        className={` ${
+                          active ? "cursor-pointer bg-gray-100" : ""
+                        } ${
+                          disabled ? "text-gray-400" : ""
+                        } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
+                      >
+                        Help
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        onClick={() => signOut()}
+                        className={` ${
+                          active ? "cursor-pointer bg-gray-100" : ""
+                        } group flex w-full items-center px-4 py-[10px] text-sm font-normal`}
+                      >
+                        Log out
+                      </button>
+                    )}
+                  </Menu.Item>
+                </div>
               </div>
             </div>
           </Menu.Items>

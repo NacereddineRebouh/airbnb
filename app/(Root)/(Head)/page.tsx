@@ -1,12 +1,12 @@
-import Card from "../../components/Card";
-import house from "../../public/images/house1.jpg";
-import house2 from "../../public/images/house2.jpg";
-import house3 from "../../public/images/house3.jpg";
-import house5 from "../../public/images/house5.png";
-import house6 from "../../public/images/house6.png";
-import house4 from "../../public/images/house4.png";
+import house from "../../../public/images/house1.jpg";
+import house2 from "../../../public/images/house2.jpg";
+import house3 from "../../../public/images/house3.jpg";
+import house5 from "../../../public/images/house5.png";
+import house6 from "../../../public/images/house6.png";
+import house4 from "../../../public/images/house4.png";
 import { cookies } from "next/headers";
 import { unstable_getServerSession } from "next-auth/next";
+import Card from "../../../components/Card";
 export default async function Home() {
   const nextCookies = cookies();
   const theme = nextCookies.get("accessToken");

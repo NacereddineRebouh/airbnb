@@ -76,20 +76,16 @@ export const authOptions = {
     }),
   ],
   pages: {
+    signIn: "/login",
     error: "/auth/error",
   },
   callbacks: {
     // @ts-ignore
     async signIn({ account, profile }) {
-      console.log("::" + account.provider);
-      console.log("::" + profile);
+      // console.log("::" + account.provider);
+      // console.log("::" + profile);
       if (account.provider === "google") {
         // we can do DB queries here
-        console.log({
-          name: profile.name,
-          email: profile.email,
-          image: profile.image,
-        });
         return true;
       }
     },

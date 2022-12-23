@@ -1,13 +1,15 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import Head from "next/head";
-import Categories from "../../components/Categories";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import "../../styles/globals.css";
-import { unstable_getServerSession } from "next-auth";
-import Header_Logged from "../../components/Header_Logged";
+import Categories from "../../../components/Categories";
+import Footer from "../../../components/Footer";
+import Header from "../../../components/Header";
 
-export default async function RootLayout({
+import "../../../styles/globals.css";
+import { unstable_getServerSession } from "next-auth";
+import Header_Logged from "../../../components/Header_Logged";
+import SessionProvider from "../../../components/providers/SessionProvider";
+
+export default async function MainLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -15,21 +17,12 @@ export default async function RootLayout({
   const session = await unstable_getServerSession();
   return (
     <html>
-      <head key="Home">
+      <head key="main">
         <title key="title">Airbnb</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1"
         />
-
-        {/* <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Cairo&display=swap"
-            rel="stylesheet"
-          />
-        </Head> */}
       </head>
 
       <body>
@@ -47,7 +40,7 @@ export default async function RootLayout({
         </section>
         {/* Other child pages */}
         <section className="mt-[200px] mb-20 z-0 mx-auto" id="Content">
-          {children}
+          <SessionProvider>{children}</SessionProvider>
         </section>
       </body>
     </html>

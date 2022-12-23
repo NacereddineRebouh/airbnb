@@ -1,6 +1,6 @@
-import Header_Logged from "../../components/Header_Logged";
-import "../../styles/globals.css";
-export default function RootLayout({
+import Header_Logged from "../../../components/Header_Logged";
+import "../../../styles/globals.css";
+export default function MessagesLayout({
   children,
 }: {
   children: React.ReactNode;

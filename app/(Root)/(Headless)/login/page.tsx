@@ -13,12 +13,13 @@ type Props = {};
 export default function Login({}: Props) {
   const [name, setname] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
-  const handleGoogleLogin = async () =>
-    signIn("google", { callbackUrl: "http://localhost:3000/" });
-
-  const pathname = usePathname() ?? "/";
   const useSearchparams = useSearchParams() ?? "/";
+
+  const handleGoogleLogin = async () => {
+    const callbackUrl = useSearchparams.get("callbackUrl") ?? null;
+    signIn("google", { callbackUrl: callbackUrl ?? "http://localhost:3000/" });
+  };
+
   useEffect(() => {
     setPassword("");
     setname("");
@@ -34,7 +35,6 @@ export default function Login({}: Props) {
   // @ts-ignore
   const handleCredLogin = async (e: FormEventHandler<HTMLButtonElement>) => {
     e.preventDefault();
-    // console.log("going to", localStorage.getItem("prevPath"));
     const payload = { name, password };
     let callB = useSearchparams.get("callbackUrl") ?? null;
     console.log("-------------", callB);

@@ -87,10 +87,10 @@ export default function Footer({}: Props) {
 
           {/* Phones and small devices */}
           <div
-            className="h-14 flex md:hidden flex-row justify-center mx-10 items-center text-[14px] gap-x-8 transition-all duration-200"
+            className="h-14 flex md:hidden flex-row justify-between mx-10 items-center text-[14px] sm:gap-x-8 transition-all duration-200"
             style={{ fontFamily: "roboto" }}
           >
-            <div className="mx-8">
+            <div className="mx-5 sm:mx-8">
               <input
                 type="radio"
                 id={"radio_MagnifyingGlassIcon"}
@@ -113,7 +113,7 @@ export default function Footer({}: Props) {
                 </p>
               </label>
             </div>
-            <div className="mx-8">
+            <div className="mx-5 sm:mx-8">
               <input
                 type="radio"
                 id={"radio_HeartIcon"}
@@ -132,7 +132,7 @@ export default function Footer({}: Props) {
                 </p>
               </label>
             </div>
-            <div className="mx-8">
+            <div className="mx-5 sm:mx-8">
               <input
                 type="radio"
                 id={"radio_UserCircleIcon"}

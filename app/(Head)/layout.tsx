@@ -4,16 +4,19 @@ import Categories from "../../components/Categories";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import "../../styles/globals.css";
+import { unstable_getServerSession } from "next-auth";
+import Header_Logged from "../../components/Header_Logged";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await unstable_getServerSession();
   return (
     <html>
       <head key="Home">
-        <title key="sdd">Airbnb</title>
+        <title key="title">Airbnb</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1"
@@ -32,7 +35,7 @@ export default function RootLayout({
       <body>
         {/* Shared Header */}
         <header id="header" className="fixed top-0 z-20">
-          <Header />
+          {session ? <Header_Logged /> : <Header />}
         </header>
         {/* Shared Category panel */}
         <section id="category">

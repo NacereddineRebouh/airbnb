@@ -14,9 +14,11 @@ export default function UserMenu({}: Props) {
     <div>
       <Menu as="div" className="relative">
         <div>
-          <Menu.Button className="relative h-11 border-[1.5px] rounded-full flex items-center justify-center w-[79px] cursor-pointer gap-1 transition-shadow duratiobun-300 hover:shadow-md ">
-            <Bars3Icon className="rounded-full text-gray-700 font-bold cursor-pointer h-6" />
-            <UserCircleIcon className="rounded-full text-gray-500 font-bold cursor-pointer h-9" />
+          <Menu.Button>
+            <div className="relative h-11 border-[1.5px] rounded-full flex items-center justify-center w-[79px] cursor-pointer gap-1 transition-shadow duratiobun-300 hover:shadow-md">
+              <Bars3Icon className="rounded-full text-gray-700 font-bold cursor-pointer h-6" />
+              <UserCircleIcon className="rounded-full text-gray-500 font-bold cursor-pointer h-9" />
+            </div>
           </Menu.Button>
         </div>
         <Transition

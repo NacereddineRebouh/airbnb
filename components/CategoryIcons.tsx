@@ -24,7 +24,7 @@ export default function CategoryIcons({ icon, title }: Props) {
         {icon}
         <p className="text-[12.5px]">{title}</p>
       </label>
-      <div className="rounded-full h-[2.8px] w-full transition-all bg-white duration-500 group-hover:bg-[#888888]/40 peer-checked:bg-black " />
+      <div className="rounded-full h-[2.8px] w-full transition-all bg-white duration-500 group-hover:bg-[#888888]/40 peer-checked:bg-gray-800 " />
     </div>
   );
 }

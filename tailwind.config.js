@@ -41,11 +41,59 @@ module.exports = {
       width: {
         '100':"30rem",
         '110':"40rem",
-      }
+      },
+      keyframes: {
+        ping2: {
+          '0%, 100% ':{
+            transform: 'scale(1.2)',
+            opacity:.9
+          },
+        },
+        customFade:{
+          '0%, 100%' :{
+            opacity: 1
+          },
+          '50%' :{
+            opacity: .4
+          },
+
+        },
+        pulse2:{
+          '0%, 100%' :{
+            transform: 'scale(1)',
+            opacity: 1
+          },
+          '50%' :{
+            transform: 'scale(1.2)',
+            opacity: .5
+          },
+
+        },
+        bounce2:{
+          '0%' :{
+            transform: 'translateY(0px)',
+            boxShadow: '15px 35px 60px -15px rgba(0,0,0,.6)',
+          },
+          '50%' :{
+            transform: 'translateY(20px)',
+            boxShadow: '15px 35px 60px -15px rgba(0,0,0,.3)',
+          },
+          '100%' :{
+            transform: 'translateY(0px)',
+            boxShadow: '15px 35px 60px -15px rgba(0,0,0,.6)',
+          },
+        }
+      },
+      animation: {
+      'spin-slow': 'spin 15s linear infinite',
+      'ping-nofade': 'customFade 2.2s linear infinite',
+      'pulseLong':'pulse2 5s ease-in-out infinite',
+      'pulseC':'pulse2 5s ease-in infinite',
+      'Hover':'bounce2 6s ease-in-out infinite'
+    },
     },
   },
   plugins: [
             require('tailwind-scrollbar')({ nocompatible: true }),
-            
            ],
 }

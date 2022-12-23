@@ -1,26 +1,21 @@
 import React from "react";
 import Image from "next/image";
-import {
-  MagnifyingGlassCircleIcon,
-  UserCircleIcon,
-  Bars3Icon,
-} from "@heroicons/react/24/solid";
+import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
-import { Divider } from "@mui/material";
-import { Menu } from "@headlessui/react";
-import UserMenu from "./UserMenu";
 import UserMenuLogged from "./UserMenuLogged";
+type Props = {
+  width?: string;
+};
 
-type Props = {};
-
-export default function Header({}: Props) {
+export default function Header({ width = "[2500px]" }: Props) {
   // const nextCookies = cookies();
   // const token = nextCookies.get("accessToken");
-
   return (
     <div className="w-screen border-[1px] bg-white">
       {/* Desktop and tablets */}
-      <div className="grid grid-cols-[30px_40px_minmax(360px,_1fr)_265px_30px] md:grid-cols-[30px_2fr_350px_minmax(265px,_2fr)_30px] lg:grid-cols-[70px_2fr_350px_minmax(265px,_2fr)_70px] gap-0 collapse mobile:visible h-0 mobile:h-20 self-center max-w-[2500px] mx-auto">
+      <div
+        className={`grid grid-cols-[30px_40px_minmax(360px,_1fr)_265px_30px] md:grid-cols-[30px_2fr_350px_minmax(265px,_2fr)_30px] lg:grid-cols-[70px_2fr_350px_minmax(265px,_2fr)_70px] gap-0 collapse mobile:visible h-0 mobile:h-20 self-center max-w-${width} mx-auto`}
+      >
         <div className="relative col-start-2 flex items-center justify-left md:mt-1 md:p-2 mr-2">
           <Image
             className="cursor-pointer collapse md:visible"
@@ -61,7 +56,7 @@ export default function Header({}: Props) {
             </div>
           </div>
           <div>
-            <UserMenu />
+            <UserMenuLogged />
           </div>
         </div>
       </div>

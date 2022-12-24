@@ -3,6 +3,8 @@ import SessionProvider from "../../../components/providers/SessionProvider";
 import { unstable_getServerSession } from "next-auth/next";
 // import {useRouter} from "next/navigation"
 import { redirect } from "next/navigation";
+import { Quicksand } from "@next/font/google";
+const Qs = Quicksand({ subsets: ["latin"], variable: "--font-inter" });
 
 export default async function RootLayout({
   children,
@@ -11,13 +13,13 @@ export default async function RootLayout({
 }) {
   const session = await unstable_getServerSession();
   // console.log(session?.user);
-  if (session?.user !== undefined || null) {
-    redirect("/");
-  }
+  // if (session?.user !== undefined || null) {
+  //   redirect("/");
+  // }
   return (
     <html>
       <head></head>
-      <body>
+      <body className={Qs.className}>
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>

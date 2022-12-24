@@ -28,59 +28,53 @@ export const authOptions = {
       id: "cred",
       name: "Credentials",
       async authorize(credentials) {
-        try {
-          // @ts-ignore
-          const { username, password } = credentials;
-
-          const result = await fetch("http://127.0.0.1:8000/api/login", {
+        // @ts-ignore
+        const { email, password } = credentials;
+        console.log(email, " ", password);
+        console.log(process.env.NEXT_PUBLIC_api_url + "/api/login");
+        const result = await fetch(
+          process.env.NEXT_PUBLIC_api_url + "/api/login",
+          {
             method: "POST",
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, password }),
             headers: {
               "Content-Type": "application/json",
               Accept: "application/json",
             },
-          });
-          let user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
-          const result2 = await result.json();
-          console.log(
-            "logged in ? :",
-            result2.success,
-            " res:",
-            result2.status
-          );
-          // Add logic here to look up the user from the credentials supplied
-          if (result2.success) {
-            user.id = String(result2.success.id);
-            user.name = result2.success.username;
-            user.email = result2.success.email;
-            return user;
-          } else if (result2.error) {
-            return null;
           }
-          return null;
-          // if (user) {
-          //   // Any object returned will be saved in `user` property of the JWT
-
-          // } else {
-          //   // If you return null then an error will be displayed advising the user to check their details.
-          //   return null;
-
-          //   // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
-          // }
-        } catch (e) {
+        );
+        let user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
+        const result2 = await result.json();
+        // Add logic here to look up the user from the credentials supplied
+        if (result2.success) {
+          console.log(result2.success);
+          user.id = String(result2.success.id);
+          user.name = result2.success.name;
+          user.email = result2.success.email;
+          return user;
+        } else {
           return null;
         }
       },
       credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
+        username: {
+          label: "email",
+          type: "text",
+          placeholder: "guest@gmail.com",
+        },
+        password: { label: "password", type: "password" },
       },
     }),
   ],
   pages: {
     signIn: "/login",
-    error: "/auth/error",
+    error: "/login",
   },
+  // callbacks: {
+  //   async signIn({ user, account, profile, email, credentials }) {
+  //     return true;
+  //   },
+  // },
 };
 // @ts-ignore
 export default NextAuth(authOptions);

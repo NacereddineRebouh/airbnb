@@ -8,6 +8,8 @@ import "../../../styles/globals.css";
 import { unstable_getServerSession } from "next-auth";
 import Header_Logged from "../../../components/Header_Logged";
 import SessionProvider from "../../../components/providers/SessionProvider";
+import { Quicksand } from "@next/font/google";
+const Qs = Quicksand({ subsets: ["latin"], variable: "--font-inter" });
 
 export default async function MainLayout({
   children,
@@ -25,7 +27,7 @@ export default async function MainLayout({
         />
       </head>
 
-      <body>
+      <body className={Qs.className}>
         {/* Shared Header */}
         <header id="header" className="fixed top-0 z-20">
           {session ? <Header_Logged /> : <Header />}

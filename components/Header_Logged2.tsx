@@ -11,16 +11,21 @@ import { Menu } from "@headlessui/react";
 import UserMenu from "./UserMenu";
 import UserMenuLogged from "./UserMenuLogged";
 import Link from "next/link";
-type Props = {};
+type Props = {
+  width?: string;
+  marginX?: string;
+};
 
-export default function Header({}: Props) {
+export default function Header({ width }: Props) {
   // const nextCookies = cookies();
   // const token = nextCookies.get("accessToken");
 
   return (
     <div className="w-screen border-[1px] bg-white">
       {/* Desktop and tablets */}
-      <div className="grid grid-cols-[30px_40px_minmax(360px,_1fr)_265px_30px] md:grid-cols-[30px_2fr_350px_minmax(265px,_2fr)_30px] lg:grid-cols-[70px_2fr_350px_minmax(265px,_2fr)_70px] gap-0 collapse mobile:visible h-0 mobile:h-20 self-center max-w-[2500px] mx-auto">
+      <div
+        className={`grid grid-cols-[30px_40px_minmax(360px,_1fr)_265px_30px] md:grid-cols-[30px_2fr_350px_minmax(265px,_2fr)_30px] lg:grid-cols-[70px_2fr_350px_minmax(265px,_2fr)_70px] gap-0 collapse mobile:visible h-0 mobile:h-20 self-center max-w-[1300px] mx-auto`}
+      >
         <Link
           href={"/"}
           className="select-none relative col-start-2 flex items-center justify-left md:mt-1 md:p-2 mr-2"

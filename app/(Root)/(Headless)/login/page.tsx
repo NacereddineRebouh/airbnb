@@ -11,8 +11,11 @@ type Props = {};
 export default function Login({}: Props) {
   // const [name, setname] = useState("");
   // const [password, setPassword] = useState("");
-  const name = useRef<HTMLInputElement>(null);
-  const password = useRef<HTMLInputElement>(null);
+  const [InputStyle, setInputStyle] = useState(
+    "bg-gray-100 text-gray-700 focus:outline-none focus:ring-[3px] duration-300 transition-all focus:ring-zinc-300 focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+  );
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const useSearchparams = useSearchParams() ?? "/";
 
@@ -32,13 +35,11 @@ export default function Login({}: Props) {
   };
 
   useEffect(() => {
-    // setPassword("");
-    // setname("");
     if (useSearchparams.get("error") != null) {
-      console.log("wrong Creds");
-      // setSection(
-      //   "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-red-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none"
-      // );
+      console.log("Wrong Creds");
+      setInputStyle(
+        "bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 border-red-400 duration-300 transition-all focus:ring-zinc-200 focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+      );
     }
   }, []);
 
@@ -46,7 +47,9 @@ export default function Login({}: Props) {
   // @ts-ignore
   const handleCredLogin = async (e: FormEventHandler<HTMLButtonElement>) => {
     e.preventDefault();
-    const payload = { name, password };
+    const email = emailRef?.current?.value;
+    const password = passwordRef?.current?.value;
+    const payload = { email, password };
     let callB = useSearchparams.get("callbackUrl") ?? null;
     console.log("-------------", callB);
     const status = await signIn("cred", {
@@ -55,7 +58,7 @@ export default function Login({}: Props) {
       ...payload,
     });
 
-    console.log(status);
+    console.log("login page:: " + JSON.stringify(status));
   };
 
   const [url, seturl] = useState("#");
@@ -160,9 +163,9 @@ export default function Login({}: Props) {
               Email Address
             </label>
             <input
-              className="bg-gray-100 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-              type="email"
-              ref={name}
+              className={InputStyle}
+              ref={emailRef}
+              type={"email"}
               required
               defaultValue={""}
             />
@@ -177,9 +180,9 @@ export default function Login({}: Props) {
               </Link>
             </div>
             <input
-              className="bg-gray-100 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+              className={InputStyle}
               type="password"
-              ref={password}
+              ref={passwordRef}
               required
               defaultValue={""}
             />

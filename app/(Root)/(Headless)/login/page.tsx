@@ -1,28 +1,39 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import axios from "axios";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useSearchParams, usePathname } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 
 type Props = {};
 
 export default function Login({}: Props) {
-  const [name, setname] = useState("");
-  const [password, setPassword] = useState("");
+  // const [name, setname] = useState("");
+  // const [password, setPassword] = useState("");
+  const name = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
+
   const useSearchparams = useSearchParams() ?? "/";
 
   const handleGoogleLogin = async () => {
     const callbackUrl = useSearchparams.get("callbackUrl") ?? null;
     signIn("google", { callbackUrl: callbackUrl ?? "http://localhost:3000/" });
   };
+  const handleGithubLogin = async () => {
+    const callbackUrl = useSearchparams.get("callbackUrl") ?? null;
+    signIn("github", { callbackUrl: callbackUrl ?? "http://localhost:3000/" });
+  };
+  const handleFacebookLogin = async () => {
+    const callbackUrl = useSearchparams.get("callbackUrl") ?? null;
+    signIn("facebook", {
+      callbackUrl: callbackUrl ?? "http://localhost:3000/",
+    });
+  };
 
   useEffect(() => {
-    setPassword("");
-    setname("");
+    // setPassword("");
+    // setname("");
     if (useSearchparams.get("error") != null) {
       console.log("wrong Creds");
       // setSection(
@@ -76,7 +87,7 @@ export default function Login({}: Props) {
         {/* Google */}
         <div
           onClick={handleGoogleLogin}
-          className="flex items-center transition-all duration-200 justify-center mt-4 text-white rounded-lg shadow-md cursor-pointer hover:bg-[#DB4437]"
+          className="group/google flex items-center transition-all select-none duration-200 justify-center mt-4 text-white rounded-lg shadow-md cursor-pointer hover:bg-[#DB4437]"
         >
           {/* <Link
           href={url ?? "#"}
@@ -102,37 +113,37 @@ export default function Login({}: Props) {
               />
             </svg>
           </div>
-          <h1 className="py-3 w-5/6 text-center hover:text-gray-200 text-gray-600 font-bold">
+          <h1 className="py-3 w-5/6 text-center group-hover/google:text-gray-200 text-gray-600 font-bold">
             Sign in with Google
           </h1>
           <div className="w-14"></div>
         </div>
         {/* Facebook */}
-        <Link
-          href=""
-          className="group/face flex items-center bg-white transition-all duration-200 justify-center mt-4 text-white rounded-lg shadow-md hover:bg-[#4267B2]"
+        <div
+          onClick={handleFacebookLogin}
+          className="group/face cursor-pointer select-none flex items-center bg-white transition-all duration-200 justify-center mt-4 text-white rounded-lg shadow-md hover:bg-[#4267B2]"
         >
           <div className="px-4 py-3">
             <FaFacebookF className="w-6 h-6 text-[#4267B2] group-hover/face:text-gray-200" />
           </div>
-          <h1 className="py-3 w-5/6 text-center text-gray-600 font-bold hover:text-gray-200">
+          <h1 className="py-3 w-5/6 text-center text-gray-600 font-bold group-hover/face:text-gray-200">
             Sign in with Facebook
           </h1>
           <div className="w-14"></div>
-        </Link>
+        </div>
         {/* GITHUB */}
-        <Link
-          href=""
-          className="group/github flex items-center transition-all duration-200 justify-center mt-4 text-white rounded-lg shadow-md hover:bg-slate-600"
+        <div
+          onClick={handleGithubLogin}
+          className="group/github cursor-pointer select-none flex items-center transition-all duration-200 justify-center mt-4 text-white rounded-lg shadow-md hover:bg-slate-600"
         >
           <div className="px-4 py-3">
             <FaGithub className="w-6 h-6 text-slate-800 group-hover/github:text-gray-100" />
           </div>
-          <h1 className="py-3 w-5/6 text-center hover:text-gray-100 text-gray-600 font-bold">
+          <h1 className="py-3 w-5/6 text-center group-hover/github:text-gray-100 text-gray-600 font-bold">
             Sign in with Github
           </h1>
           <div className="w-14"></div>
-        </Link>
+        </div>
         <div className="relative mt-4 flex items-center justify-center">
           <span className="border-b w-full"></span>
           <Link
@@ -143,7 +154,7 @@ export default function Login({}: Props) {
           </Link>
           <span className="border-b w-full"></span>
         </div>
-        <form>
+        <form onSubmit={handleCredLogin}>
           <div className="mt-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Email Address
@@ -151,8 +162,9 @@ export default function Login({}: Props) {
             <input
               className="bg-gray-100 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
               type="email"
-              value={name}
-              onChange={(e) => setname(e.target.value)}
+              ref={name}
+              required
+              defaultValue={""}
             />
           </div>
           <div className="mt-4">
@@ -167,14 +179,15 @@ export default function Login({}: Props) {
             <input
               className="bg-gray-100 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              ref={password}
+              required
+              defaultValue={""}
             />
           </div>
           <div className="mt-8">
             <button
+              type="submit"
               className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600"
-              onSubmit={handleCredLogin}
             >
               Login
             </button>

@@ -11,11 +11,11 @@ export default async function Home() {
   const nextCookies = cookies();
   const theme = nextCookies.get("accessToken");
   const session = await unstable_getServerSession();
-  console.log({
-    name: session?.user?.name,
-    email: session?.user?.email,
-    lastName: session?.user?.image,
-  });
+  // console.log({
+  //   name: session?.user?.name,
+  //   email: session?.user?.email,
+  //   lastName: session?.user?.image,
+  // });
   return (
     <div className="relative mx-10 lg:mx-20 my-8 flex-1 overflow-visible">
       {/* List of houses */}

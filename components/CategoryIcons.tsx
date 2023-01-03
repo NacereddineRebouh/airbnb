@@ -3,30 +3,31 @@ import React from "react";
 type Props = {
   icon: JSX.Element;
   title: string;
+  className?: string;
 };
 
-export default function CategoryIcons({ icon, title }: Props) {
+export default function CategoryIcons({ icon, title, className }: Props) {
   const radio = `Icon-radio-${title.replace(/\s/g, "")}`;
   return (
-    <div className="bg-white flex flex-col justify-center gap-2 items-center text-gray-500 self-end rounded-lg group transition-all duration-500 hover:text-black/80 ">
+    <div
+      className={`group mx-2 flex flex-1 flex-col items-center justify-center gap-2 self-end rounded-lg bg-white text-gray-500 transition-all duration-500 hover:text-black/80`}
+    >
       <input
         type="radio"
         id={radio}
         name="hosting"
         value={radio}
-        className="hidden peer"
+        className="peer hidden transition-all duration-300 group-active:scale-95"
         required
       />
       <label
         htmlFor={radio}
-        className="flex flex-col justify-center gap-2 items-center cursor-pointer peer-checked:cursor-default peer-checked:text-black group"
+        className="flex cursor-pointer flex-col items-center justify-center gap-2 transition-all duration-300 group-active:scale-95 peer-checked:cursor-default peer-checked:text-black"
       >
         {icon}
-        <p className="text-[11.5px]" style={{ fontFamily: "Roboto" }}>
-          {title}
-        </p>
+        <p className="truncate text-[11px] mobile:text-[11.5px]">{title}</p>
       </label>
-      <div className="rounded-full h-[2.8px] w-full transition-all bg-white duration-500 group-hover:bg-[#888888]/40 peer-checked:bg-gray-800 " />
+      <div className="h-[2.3px] w-full rounded-full bg-white transition-all duration-500 group-hover:bg-[#888888]/40 peer-checked:bg-gray-800 " />
     </div>
   );
 }

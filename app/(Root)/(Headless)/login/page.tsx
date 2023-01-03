@@ -80,17 +80,17 @@ export default function Login({}: Props) {
   // }, []);
 
   return (
-    <section className="bg-gray-50 h-screen w-screen flex items-center">
-      <div className="p-8 mx-auto w-96 sm:w-[600px]">
-        <h2 className="text-2xl font-semibold text-gray-700 text-center">
+    <section className="flex h-screen w-screen items-center bg-gray-50 text-sm sm:text-base">
+      <div className="mx-auto w-full p-8 sm:w-[600px]">
+        <h2 className="text-center text-2xl font-semibold text-gray-700">
           Airbnb
         </h2>
-        <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+        <p className="text-center text-xl text-gray-600">Welcome back!</p>
 
         {/* Google */}
         <div
           onClick={handleGoogleLogin}
-          className="group/google flex items-center transition-all select-none duration-200 justify-center mt-4 text-white rounded-lg shadow-md cursor-pointer hover:bg-[#DB4437]"
+          className="group/google mt-4 flex cursor-pointer select-none items-center justify-center rounded-lg text-white shadow-md transition-all duration-200 hover:bg-[#DB4437]"
         >
           {/* <Link
           href={url ?? "#"}
@@ -116,7 +116,7 @@ export default function Login({}: Props) {
               />
             </svg>
           </div>
-          <h1 className="py-3 w-5/6 text-center group-hover/google:text-gray-200 text-gray-600 font-bold">
+          <h1 className="w-5/6 py-3 text-center font-bold text-gray-600 group-hover/google:text-gray-200">
             Sign in with Google
           </h1>
           <div className="w-14"></div>
@@ -124,12 +124,12 @@ export default function Login({}: Props) {
         {/* Facebook */}
         <div
           onClick={handleFacebookLogin}
-          className="group/face cursor-pointer select-none flex items-center bg-white transition-all duration-200 justify-center mt-4 text-white rounded-lg shadow-md hover:bg-[#4267B2]"
+          className="group/face mt-4 flex cursor-pointer select-none items-center justify-center rounded-lg text-white shadow-md transition-all duration-200 hover:bg-[#4267B2]"
         >
           <div className="px-4 py-3">
-            <FaFacebookF className="w-6 h-6 text-[#4267B2] group-hover/face:text-gray-200" />
+            <FaFacebookF className="h-6 w-6 text-[#4267B2] group-hover/face:text-gray-200" />
           </div>
-          <h1 className="py-3 w-5/6 text-center text-gray-600 font-bold group-hover/face:text-gray-200">
+          <h1 className="w-5/6 py-3 text-center font-bold text-gray-600 group-hover/face:text-gray-200">
             Sign in with Facebook
           </h1>
           <div className="w-14"></div>
@@ -137,29 +137,29 @@ export default function Login({}: Props) {
         {/* GITHUB */}
         <div
           onClick={handleGithubLogin}
-          className="group/github cursor-pointer select-none flex items-center transition-all duration-200 justify-center mt-4 text-white rounded-lg shadow-md hover:bg-slate-600"
+          className="group/github mt-4 flex cursor-pointer select-none items-center justify-center rounded-lg text-white shadow-md transition-all duration-200 hover:bg-slate-600"
         >
           <div className="px-4 py-3">
-            <FaGithub className="w-6 h-6 text-slate-800 group-hover/github:text-gray-100" />
+            <FaGithub className="h-6 w-6 text-slate-800 group-hover/github:text-gray-100" />
           </div>
-          <h1 className="py-3 w-5/6 text-center group-hover/github:text-gray-100 text-gray-600 font-bold">
+          <h1 className="w-5/6 py-3 text-center font-bold text-gray-600 group-hover/github:text-gray-100">
             Sign in with Github
           </h1>
           <div className="w-14"></div>
         </div>
         <div className="relative mt-4 flex items-center justify-center">
-          <span className="border-b w-full"></span>
+          <span className="w-full border-b"></span>
           <Link
             href="#"
-            className="text-xs text-center text-gray-500 uppercase mx-10 truncate w-96"
+            className="mx-10 w-96 truncate text-center text-xs uppercase text-gray-500"
           >
             or
           </Link>
-          <span className="border-b w-full"></span>
+          <span className="w-full border-b"></span>
         </div>
         <form onSubmit={handleCredLogin}>
           <div className="mt-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="mb-2 block text-sm font-bold text-gray-700">
               Email Address
             </label>
             <input
@@ -172,7 +172,7 @@ export default function Login({}: Props) {
           </div>
           <div className="mt-4">
             <div className="flex justify-between">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="mb-2 block text-sm font-bold text-gray-700">
                 Password
               </label>
               <Link href="#" className="text-xs text-gray-500">
@@ -190,21 +190,21 @@ export default function Login({}: Props) {
           <div className="mt-8">
             <button
               type="submit"
-              className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600"
+              className="w-full rounded bg-gray-700 py-2 px-4 font-bold text-white hover:bg-gray-600"
             >
               Login
             </button>
           </div>
         </form>
         <div className="mt-4 flex items-center justify-between">
-          <span className="border-b w-full"></span>
+          <span className="w-full border-b"></span>
           <Link
-            href="#"
-            className="text-xs text-center text-gray-500 uppercase mx-10 truncate w-96"
+            href={"/signup"}
+            className="mx-10 w-96 truncate text-center text-xs uppercase text-gray-500"
           >
             or signup
           </Link>
-          <span className="border-b w-full"></span>
+          <span className="w-full border-b"></span>
         </div>
       </div>
     </section>

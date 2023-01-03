@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   MapIcon,
   GlobeAltIcon,
@@ -10,28 +10,58 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import MyModal from "./Modal";
+import { usePathname } from "next/navigation";
 
 type Props = {};
 
 export default function Footer({}: Props) {
+  const [login, setlogin] = useState(false);
+  const [wishlists, setwishlists] = useState(false);
+  const [explore, setexplore] = useState(false);
+
+  //@ts_ignore
+  const path = usePathname() ?? "";
+  useEffect(() => {
+    switch (path) {
+      case "/login":
+        setlogin(true);
+        setwishlists(false);
+        setexplore(false);
+        break;
+      case "/wishlists":
+        setwishlists(true);
+        setexplore(false);
+        setlogin(false);
+        break;
+      case "/explore":
+        setexplore(true);
+        setwishlists(false);
+        setlogin(false);
+        break;
+      case "/search":
+        setexplore(true);
+        setlogin(false);
+        setwishlists(false);
+        break;
+      default:
+        setexplore(true);
+        setlogin(false);
+        setwishlists(false);
+    }
+  }, [path]);
+
   return (
-    <div
-      className="flex flex-col items-center justify-center w-screen gap-10"
-      style={{ fontFamily: "roboto" }}
-    >
+    <div className="flex w-screen flex-col items-center justify-center gap-4 mobile:gap-10">
       {/* show map */}
-      <div className=" h-12 w-auto rounded-full bg-zinc-800 flex flex-row gap-2 justify-center items-center transition-all text-white px-3 font-medium hover:scale-105 hover:shadow-md cursor-pointer">
+      <div className="flex h-8 w-auto cursor-pointer flex-row items-center justify-center gap-2 rounded-full bg-zinc-800 px-3 text-xs font-medium text-white transition-all hover:scale-105 hover:shadow-md mobile:h-12 mobile:text-base">
         Show map
-        <MapIcon width={20} />
+        <MapIcon className="h-4 w-4 mobile:h-5 mobile:w-5" />
       </div>
-      <footer className="w-screen border-[1px] bg-white">
+      <div className="w-screen border-[1px] bg-white">
         {/* desktop and tables */}
-        <div className="max-w-[2500px] mx-auto">
-          <div
-            className="h-12 hidden md:flex flex-row justify-between mx-16 lg:mx-24 items-center text-[14px]"
-            style={{ fontFamily: "roboto" }}
-          >
-            <div className="flex flex-wrap mr-5">
+        <div className="mx-auto max-w-[2500px]">
+          <div className="mx-16 hidden h-12 flex-row items-center justify-between text-[14px] md:flex lg:mx-24">
+            <div className="mr-5 flex flex-wrap">
               <Link href={"#"}>© 2022 Airbnb, Inc.</Link>
               <span className="mx-1"> · </span>
               <Link href={"#"} className="hover:underline">
@@ -50,10 +80,10 @@ export default function Footer({}: Props) {
                 Destinations
               </Link>
             </div>
-            <div className="flex flex-row gap-4 justify-center items-center">
+            <div className="flex flex-row items-center justify-center gap-4">
               {/* language */}
               <MyModal sizeX={"full"} sizeY={"[1000px]"} content={"Languages"}>
-                <div className="flex flex-row gap-2 hover:underline cursor-pointer font-medium">
+                <div className="flex cursor-pointer flex-row gap-2 font-medium hover:underline">
                   <GlobeAltIcon className="h-5" />
                   <div className="font-medium hover:underline">English(US)</div>
                 </div>
@@ -61,7 +91,7 @@ export default function Footer({}: Props) {
 
               {/* Currency */}
               <MyModal sizeX={"full"} sizeY={"[1000px]"} content={"Currency"}>
-                <div className="flex flex-row gap-2 hover:underline cursor-pointer font-medium truncate">
+                <div className="flex cursor-pointer flex-row gap-2 truncate font-medium hover:underline">
                   <div className="font-medium hover:underline">$ USD</div>
                 </div>
               </MyModal>
@@ -77,7 +107,7 @@ export default function Footer({}: Props) {
                 sizeY={"[800px]"}
                 content={"Support and ressources"}
               >
-                <div className="flex flex-row gap-2 hover:underline cursor-pointer font-medium truncate">
+                <div className="flex cursor-pointer flex-row gap-2 truncate font-medium hover:underline">
                   <p className="hover:underline">Support & ressources</p>
                   <ChevronUpIcon className="h-4 stroke-[2px] font-bold " />
                 </div>
@@ -86,74 +116,73 @@ export default function Footer({}: Props) {
           </div>
 
           {/* Phones and small devices */}
-          <div
-            className="h-14 flex md:hidden flex-row justify-between mx-10 items-center text-[14px] sm:gap-x-8 transition-all duration-200"
-            style={{ fontFamily: "roboto" }}
-          >
-            <div className="mx-5 sm:mx-8">
+          <div className="mx-10 flex h-14 flex-row items-center justify-between text-[14px] transition-all duration-200 sm:gap-x-8 md:hidden">
+            <Link href={"/"} className="mx-5 sm:mx-8">
               <input
                 type="radio"
                 id={"radio_MagnifyingGlassIcon"}
                 name="Radio1"
                 value={"radio_MagnifyingGlassIcon"}
-                className="hidden peer"
+                className="peer hidden"
                 required
-                defaultChecked={true}
+                defaultChecked={explore}
               />
               <label
                 htmlFor={"radio_MagnifyingGlassIcon"}
-                className="flex flex-col justify-center items-center cursor-pointer peer-checked:cursor-default text-gray-400 peer-checked:text-rose-600"
+                className="flex cursor-pointer flex-col items-center justify-center text-gray-400 peer-checked:cursor-default peer-checked:text-rose-600"
               >
                 <MagnifyingGlassIcon
                   className="text-[2.5px] "
                   width={26}
                 ></MagnifyingGlassIcon>
-                <p className="truncate text-gray-600 text-[11px] font-bold">
+                <p className="select-none truncate text-[11px] font-medium text-gray-600">
                   Explore
                 </p>
               </label>
-            </div>
-            <div className="mx-5 sm:mx-8">
+            </Link>
+            <Link href={"/wishlists"} className="mx-5 sm:mx-8">
               <input
                 type="radio"
                 id={"radio_HeartIcon"}
                 name="Radio1"
                 value={"radio_HeartIcon"}
-                className="hidden peer"
+                className="peer hidden"
                 required
+                defaultChecked={wishlists}
               />
               <label
                 htmlFor={"radio_HeartIcon"}
-                className="flex flex-col justify-center items-center cursor-pointer peer-checked:cursor-default text-gray-400 peer-checked:text-rose-600"
+                className="flex cursor-pointer flex-col items-center justify-center text-gray-400 peer-checked:cursor-default peer-checked:text-rose-600"
               >
                 <HeartIcon width={26}></HeartIcon>
-                <p className="truncate text-gray-600 text-[11px] font-bold">
-                  WishList
+                <p className="select-none truncate text-[11px] font-medium text-gray-600">
+                  WishLists
                 </p>
               </label>
-            </div>
-            <div className="mx-5 sm:mx-8">
+            </Link>
+            <Link href={"/login"} className="mx-5 sm:mx-8">
               <input
                 type="radio"
                 id={"radio_UserCircleIcon"}
                 name="Radio1"
                 value={"radio_UserCircleIcon"}
-                className="hidden peer group"
+                className="group peer hidden"
                 required
+                defaultChecked={login}
               />
               <label
                 htmlFor={"radio_UserCircleIcon"}
-                className="flex flex-col justify-center items-center cursor-pointer peer-checked:cursor-default text-gray-400 peer-checked:text-rose-600"
+                className="flex cursor-pointer flex-col items-center justify-center text-gray-400 peer-checked:cursor-default peer-checked:text-rose-600"
               >
                 <UserCircleIcon width={26}></UserCircleIcon>
-                <p className="truncate text-gray-600 text-[11px] font-bold">
+                <p className="select-none truncate text-[11px] font-medium text-gray-600">
                   Log in
                 </p>
               </label>
-            </div>
+            </Link>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
   );
 }

@@ -18,7 +18,12 @@ export default async function RootLayout({
   // }
   return (
     <html>
-      <head></head>
+      <head key="main">
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1"
+        />
+      </head>
       <body className={Qs.className}>
         <SessionProvider>{children}</SessionProvider>
       </body>

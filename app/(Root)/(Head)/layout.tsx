@@ -9,6 +9,7 @@ import { unstable_getServerSession } from "next-auth";
 import Header_Logged from "../../../components/Header_Logged";
 import SessionProvider from "../../../components/providers/SessionProvider";
 import { Quicksand } from "@next/font/google";
+import FooterLogged from "../../../components/FooterLogged";
 const Qs = Quicksand({ subsets: ["latin"], variable: "--font-inter" });
 
 export default async function MainLayout({
@@ -27,7 +28,7 @@ export default async function MainLayout({
         />
       </head>
 
-      <body className={Qs.className}>
+      <body className={` ${Qs.className}`}>
         {/* Shared Header */}
         <header id="header" className="fixed top-0 z-20">
           {session ? <Header_Logged /> : <Header />}
@@ -37,11 +38,11 @@ export default async function MainLayout({
           <Categories />
         </section>
 
-        <section id="footer" className="fixed bottom-[0px] z-50 self-end">
-          <Footer />
-        </section>
+        <footer id="footer" className="fixed bottom-[0px] z-50 self-end">
+          {session ? <FooterLogged /> : <Footer />}
+        </footer>
         {/* Other child pages */}
-        <section className="mt-[200px] mb-20 z-0 mx-auto" id="Content">
+        <section className="z-0 mx-auto mt-[200px] mb-20" id="Content">
           <SessionProvider>{children}</SessionProvider>
         </section>
       </body>

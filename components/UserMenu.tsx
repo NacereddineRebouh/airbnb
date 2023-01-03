@@ -12,12 +12,12 @@ type Props = {};
 export default function UserMenu({}: Props) {
   return (
     <div>
-      <Menu as="div" className="relative">
+      <Menu as="div" className="relative z-20">
         <div>
           <Menu.Button>
-            <div className="relative h-11 border-[1.5px] rounded-full flex items-center justify-center w-[79px] cursor-pointer gap-1 transition-shadow duratiobun-300 hover:shadow-md">
-              <Bars3Icon className="rounded-full text-gray-700 font-bold cursor-pointer h-6" />
-              <UserCircleIcon className="rounded-full text-gray-500 font-bold cursor-pointer h-9" />
+            <div className="relative flex h-11 w-[79px] cursor-pointer items-center justify-center gap-1 rounded-full border-[1.5px] transition-shadow duration-300 hover:shadow-md">
+              <Bars3Icon className="h-6 cursor-pointer rounded-full font-bold text-gray-700" />
+              <UserCircleIcon className="h-9 cursor-pointer rounded-full font-bold text-gray-500" />
             </div>
           </Menu.Button>
         </div>
@@ -38,7 +38,7 @@ export default function UserMenu({}: Props) {
                     <div
                       className={`${
                         active ? "bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-2 text-sm`}
+                      } group flex w-full cursor-pointer items-center px-4 py-2 text-sm`}
                     >
                       Sign up
                     </div>
@@ -63,7 +63,7 @@ export default function UserMenu({}: Props) {
                     <div
                       className={`${
                         active ? "bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-2 text-sm font-normal mt-2`}
+                      } group mt-2 flex w-full cursor-pointer items-center px-4 py-2 text-sm font-normal`}
                     >
                       Airbnb your home
                     </div>
@@ -75,7 +75,7 @@ export default function UserMenu({}: Props) {
                       onClick={() => console.log("")}
                       className={` ${
                         active ? "cursor-pointer bg-gray-100" : ""
-                      } group flex w-full items-center px-4 py-2 text-sm font-normal`}
+                      } group flex w-full cursor-pointer items-center px-4 py-2 text-sm font-normal`}
                     >
                       Host an experience
                     </button>

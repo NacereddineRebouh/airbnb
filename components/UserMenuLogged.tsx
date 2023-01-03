@@ -43,12 +43,12 @@ export default function UserMenuLogged({}: Props) {
   // };
   return (
     <div>
-      <Menu as="div" className="relative">
+      <Menu as="div" className="relative z-50">
         <div>
           <Menu.Button>
-            <div className="relative h-11 border-[1.5px] rounded-full flex items-center justify-center w-[79px] cursor-pointer gap-1 transition-shadow duratiobun-300 hover:shadow-md">
-              <Bars3Icon className="rounded-full text-gray-700 font-bold cursor-pointer h-6" />
-              <UserCircleIcon className="rounded-full text-gray-500 fill-slate-600 bg-gray-300 font-bold cursor-pointer h-9" />
+            <div className="duratiobun-300 relative flex h-11 w-[79px] cursor-pointer items-center justify-center gap-1 rounded-full border-[1.5px] transition-shadow hover:shadow-md">
+              <Bars3Icon className="h-6 cursor-pointer rounded-full font-bold text-gray-700" />
+              <UserCircleIcon className="h-9 cursor-pointer rounded-full bg-gray-300 fill-slate-600 font-bold text-gray-500" />
             </div>
           </Menu.Button>
         </div>

@@ -1,7 +1,7 @@
 export { default } from "next-auth/middleware";
 
 export const config = {
-  matcher: ["/messages", "/account", "/wishlists", "/trips"],
+  matcher: ["/messages", "/account", "/trips"],
 };
 // import { withAuth } from "next-auth/middleware";
 

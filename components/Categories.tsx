@@ -8,6 +8,26 @@ import {
 } from "@heroicons/react/24/solid";
 import { HomeModernIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
+import { GiFarmTractor, GiGrandPiano, GiHabitatDome } from "react-icons/gi";
+import { AiOutlineFire } from "react-icons/ai";
+import { FaSwimmingPool } from "react-icons/fa";
+import { TbBeach, TbWindmill } from "react-icons/tb";
+import { GiPisaTower } from "react-icons/gi";
+import { RiCactusLine } from "react-icons/ri";
+import { IoSnowOutline } from "react-icons/io5";
+import { TbBuildingCastle } from "react-icons/tb";
+import {
+  MdHouseboat,
+  MdOutlineSnowmobile,
+  MdOutlineSportsGolf,
+  MdOutlineSurfing,
+} from "react-icons/md";
+import {
+  GiIsland,
+  GiMountainCave,
+  GiPalmTree,
+  GiTreehouse,
+} from "react-icons/gi";
 import Image from "next/image";
 import CategoryIcons from "./CategoryIcons";
 
@@ -60,15 +80,15 @@ export default function Categories() {
     <div
       className={
         dettach
-          ? "fixed left-0 top-[80px] z-10 bg-white w-screen mx-auto duration-100 transition-all"
-          : "pt-4 fixed left-0 top-[80px] z-10 bg-white w-screen mx-auto duration-100 transition-all"
+          ? "fixed left-0 top-[80px] z-10 mx-auto w-screen bg-white transition-all duration-100"
+          : "fixed left-0 top-[80px] z-10 mx-auto w-screen bg-white transition-all duration-100 mobile:pt-4"
       }
     >
       <div
         className={
           dettach
-            ? "hidden sm:grid grid-cols-[40px,4fr,40px,100px] px-9 lg:px-20 gap-2 justify-center items-center shadow-md shadow-black/5 max-w-[2500px] mx-auto"
-            : "hidden sm:grid grid-cols-[40px,4fr,40px,100px] px-9 lg:px-20 gap-2 justify-center items-center max-w-[2500px] mx-auto "
+            ? "mx-auto hidden max-w-[2500px] grid-cols-[40px,4fr,40px,100px] items-center justify-center gap-2 px-9 shadow-md shadow-black/5 sm:grid lg:px-20"
+            : "mx-auto hidden max-w-[2500px] grid-cols-[40px,4fr,40px,100px] items-center justify-center gap-2 px-9 sm:grid lg:px-20 "
         }
       >
         {/* <style>
@@ -79,7 +99,7 @@ export default function Categories() {
           ref={left}
           hidden={true}
           key="GoLeft"
-          className="border-[1.5px] border-gray-300 shadow-sm rounded-full cursor-pointer col-start-1 w-7 h-7 transition-all hover:scale-[113%] hover:shadow-xl ease-in-out duration-150"
+          className="col-start-1 h-7 w-7 cursor-pointer rounded-full border-b-[1.5px] border-gray-300 shadow-sm transition-all duration-150 ease-in-out hover:scale-[113%] hover:shadow-xl mobile:border-[1.5px]"
           onClick={(e) => {
             let off = offset;
             if (Math.abs(Scrolled) < offset) {
@@ -93,15 +113,9 @@ export default function Categories() {
             //used bcz setState needs time to update
 
             console.log("//Move div to the right and scrolled :", newScrolled);
-            //--------------------------------------------------------------------------------//
-            //-------------------------------- 2-Check --Hide or Show ---------------------------------------//
-            //--------------------------------------------------------------------------------//
-
-            //
 
             if (newScrolled == 0) {
               // @ts-ignore
-              // e.currentTarget.style.visibility = "hidden";
               left.current["hidden"] = true;
             }
             if (
@@ -121,10 +135,10 @@ export default function Categories() {
             // left.current["disabled"] = false;
           }}
         >
-          <ChevronLeftIcon className="w-4 h-4 font-bold ml-1" />
+          <ChevronLeftIcon className="ml-1 h-4 w-4 font-bold" />
         </button>
         <div
-          className="relative h-[80px] bg-white overflow-hidden items-center justify-start flex mx-1 col-start-2 "
+          className="relative col-start-2 mx-1 flex h-[80px] items-center justify-start overflow-hidden bg-white "
           ref={Container}
         >
           <motion.div
@@ -133,66 +147,150 @@ export default function Categories() {
             variants={slideVariants}
             animate={goLeft ? "GoLeft" : "GoRight"}
             transition={{ duration: 0.5, type: "spring", bounce: 0, delay: 0 }}
-            className="flex flex-row gap-4 items-center justify-end text-[#888888] tracking-wide flex-shrink-0 font-medium h-full"
-            style={{ fontFamily: "Roboto" }}
+            className="flex h-full shrink-0 select-none flex-row items-center justify-end gap-4 overflow-x-scroll font-semibold tracking-wide text-[#888888] scrollbar-none"
           >
-            {/* <div className="bg-white flex flex-col justify-center gap-2 items-center self-end rounded-lg group transition-all duration-500 hover:text-black/80 ">
-            <input
-              type="radio"
-              id="hosting-small"
-              name="hosting"
-              value="hosting-small"
-              className="hidden peer"
-              required
-            />
-            <label
-              htmlFor="hosting-small"
-              className="flex flex-col justify-center gap-2 items-center cursor-pointer peer-checked:cursor-default peer-checked:text-black group"
-            >
-              <HomeModernIcon className="w-6 h-6 " />
-              <p className="text-[12.5px]">Amazing pools</p>
-            </label>
-            <div className="rounded-full h-[2.8px] w-full transition-all bg-white duration-500 group-hover:bg-[#888888]/40 peer-checked:bg-black " />
-          </div> */}
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools"}
+              icon={<HomeModernIcon className="h-6 w-6" />}
+              title={"Forest"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools1"}
+              icon={<GiFarmTractor className="h-6 w-6" />}
+              title={"Fermes"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools2"}
+              icon={<AiOutlineFire className="h-6 w-6" />}
+              title={"Tendance"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools22"}
+              icon={<FaSwimmingPool className="h-6 w-6" />}
+              title={"Pool"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools3"}
+              icon={<TbBeach className="h-6 w-6" />}
+              title={"Beach"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools4"}
+              className={"flex grow"}
+              icon={<GiPisaTower className="h-6 w-6" />}
+              title={"Monuments"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools5"}
+              icon={<GiIsland className="h-6 w-6" />}
+              title={"Island"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools6"}
+              icon={<HomeModernIcon className="h-6 w-6" />}
+              title={"Tiny homes"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools7"}
+              icon={<GiPalmTree className="h-6 w-6" />}
+              title={"Tropics"}
+            />
+
+            <CategoryIcons
+              icon={<MdHouseboat className="h-6 w-6" />}
+              title={"HouseBoats"}
             />
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools8"}
+              icon={<GiIsland className="h-6 w-6" />}
+              title={"Island"}
+            />
+
+            <CategoryIcons
+              icon={<HomeModernIcon className="h-6 w-6" />}
+              title={"Tiny homes"}
+            />
+
+            <CategoryIcons
+              icon={<GiPalmTree className="h-6 w-6" />}
+              title={"Tropics"}
+            />
+
+            <CategoryIcons
+              icon={<MdHouseboat className="h-6 w-6" />}
+              title={"HouseBoats"}
+            />
+            <CategoryIcons
+              icon={<GiIsland className="h-6 w-6" />}
+              title={"Island"}
+            />
+
+            <CategoryIcons
+              icon={<HomeModernIcon className="h-6 w-6" />}
+              title={"Tiny homes"}
+            />
+
+            <CategoryIcons
+              icon={<GiPalmTree className="h-6 w-6" />}
+              title={"Tropics"}
+            />
+
+            <CategoryIcons
+              icon={<MdHouseboat className="h-6 w-6" />}
+              title={"HouseBoats"}
+            />
+
+            <CategoryIcons
+              icon={<GiMountainCave className="h-6 w-6" />}
+              title={"Mountains"}
+            />
+
+            <CategoryIcons
+              icon={<MdOutlineSnowmobile className="h-6 w-6" />}
+              title={"Ski-in/out"}
+            />
+
+            <CategoryIcons
+              icon={<GiTreehouse className="h-6 w-6" />}
+              title={"Treehouse"}
+            />
+
+            <CategoryIcons
+              icon={<IoSnowOutline className="h-6 w-6" />}
+              title={"Arctic"}
+            />
+
+            <CategoryIcons
+              icon={<GiHabitatDome className="h-6 w-6" />}
+              title={"Domes"}
+            />
+
+            <CategoryIcons
+              icon={<MdOutlineSurfing className="h-6 w-6" />}
+              title={"Surfing"}
+            />
+
+            <CategoryIcons
+              icon={<TbWindmill className="h-6 w-6" />}
+              title={"Windmils"}
+            />
+
+            <CategoryIcons
+              icon={<GiGrandPiano className="h-6 w-6" />}
+              title={"Grand pianos"}
+            />
+
+            <CategoryIcons
+              icon={<MdOutlineSportsGolf className="h-6 w-6" />}
+              title={"Golf"}
+            />
+
+            <CategoryIcons
+              icon={<RiCactusLine className="h-6 w-6" />}
+              title={"Desert"}
+            />
+
+            <CategoryIcons
+              icon={<TbBuildingCastle className="h-6 w-6" />}
+              title={"Castle"}
             />
           </motion.div>
         </div>
@@ -200,7 +298,7 @@ export default function Categories() {
           ref={right}
           hidden={hideRight ? true : false}
           key="GoRight"
-          className="border-[1.5px] border-gray-300 shadow-sm rounded-full cursor-pointer col-start-3 w-7 h-7 transition-all hover:scale-[113%] hover:shadow-xl ease-in-out duration-150"
+          className="col-start-3 h-7 w-7 cursor-pointer rounded-full border-[1.5px] border-gray-300 shadow-sm transition-all duration-150 ease-in-out hover:scale-[113%] hover:shadow-xl"
           onClick={() => {
             let off = offset;
             //make sure the last sliding is precise
@@ -266,62 +364,126 @@ export default function Categories() {
             }
           }}
         >
-          <ChevronRightIcon className="w-4 h-4 font-bold ml-1" />
+          <ChevronRightIcon className="ml-1 h-4 w-4 font-bold" />
         </button>
-        <div className="flex flex-row gap-2 items-center hover:shadow-md cursor-pointer transition-all duration-200 justify-center bg-white text-center rounded-xl border-[1px] col-start-4 h-12 self-center mx-1">
+        <div className="col-start-4 mx-1 flex h-12 cursor-pointer flex-row items-center justify-center gap-2 self-center rounded-xl border-[1px] bg-white text-center transition-all duration-200 hover:shadow-md">
           <AdjustmentsHorizontalIcon className="h-5" />
-          <p className="text-[14px] mb-1">Filters</p>
+          <p className="mb-1 text-[14px]">Filters</p>
         </div>
       </div>
 
       {/* Mobile */}
-      <div className="sm:hidden flex group/scroll  shadow-md shadow-black/10 border-b-[1px]">
-        <div className="relative h-[80px] bg-white overflow-x-scroll items-center justify-start flex col-start-2 scrollbar-none mx-2 ">
+      <div className="group/scroll flex border-b-[1px] shadow-md shadow-black/10 sm:hidden">
+        <div className="relative col-start-2 mx-2 flex h-[80px] items-center justify-start overflow-x-scroll bg-white scrollbar-none ">
           <motion.div
             initial={false}
             transition={{ duration: 0.5, type: "spring", bounce: 0, delay: 0 }}
-            className="flex flex-row gap-4 items-center justify-end text-[#888888] tracking-wide flex-shrink-0 font-medium h-full"
-            style={{ fontFamily: "Roboto" }}
+            className="flex h-full flex-row items-center justify-end gap-4 font-semibold tracking-wide text-[#888888]"
           >
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools10"}
+              icon={<HomeModernIcon className="h-6 w-6" />}
+              title={"Forest"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools11"}
+              icon={<GiFarmTractor className="h-6 w-6" />}
+              title={"Fermes"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools12"}
+              icon={<AiOutlineFire className="h-6 w-6" />}
+              title={"Tendance"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools122"}
+              icon={<FaSwimmingPool className="h-6 w-6" />}
+              title={"Pool"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools13"}
+              icon={<TbBeach className="h-6 w-6" />}
+              title={"Beach"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools14"}
+              className={"flex grow"}
+              icon={<GiPisaTower className="h-6 w-6" />}
+              title={"Monuments"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools15"}
+              icon={<GiIsland className="h-6 w-6" />}
+              title={"Island"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools16"}
+              icon={<HomeModernIcon className="h-6 w-6" />}
+              title={"Tiny homes"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools17"}
+              icon={<GiPalmTree className="h-6 w-6" />}
+              title={"Tropics"}
             />
+
             <CategoryIcons
-              icon={<HomeModernIcon className="w-6 h-6 " />}
-              title={"Amazing pools18"}
+              icon={<MdHouseboat className="h-6 w-6" />}
+              title={"HouseBoats"}
+            />
+
+            <CategoryIcons
+              icon={<GiMountainCave className="h-6 w-6" />}
+              title={"Mountains"}
+            />
+
+            <CategoryIcons
+              icon={<MdOutlineSnowmobile className="h-6 w-6" />}
+              title={"Ski-in/out"}
+            />
+
+            <CategoryIcons
+              icon={<GiTreehouse className="h-6 w-6" />}
+              title={"Treehouse"}
+            />
+
+            <CategoryIcons
+              icon={<IoSnowOutline className="h-6 w-6" />}
+              title={"Arctic"}
+            />
+
+            <CategoryIcons
+              icon={<GiHabitatDome className="h-6 w-6" />}
+              title={"Domes"}
+            />
+
+            <CategoryIcons
+              icon={<MdOutlineSurfing className="h-6 w-6" />}
+              title={"Surfing"}
+            />
+
+            <CategoryIcons
+              icon={<TbWindmill className="h-6 w-6" />}
+              title={"Windmils"}
+            />
+
+            <CategoryIcons
+              icon={<GiGrandPiano className="h-6 w-6" />}
+              title={"Grand pianos"}
+            />
+
+            <CategoryIcons
+              icon={<MdOutlineSportsGolf className="h-6 w-6" />}
+              title={"Golf"}
+            />
+
+            <CategoryIcons
+              icon={<RiCactusLine className="h-6 w-6" />}
+              title={"Desert"}
+            />
+
+            <CategoryIcons
+              icon={<TbBuildingCastle className="h-6 w-6" />}
+              title={"Castle"}
             />
           </motion.div>
         </div>

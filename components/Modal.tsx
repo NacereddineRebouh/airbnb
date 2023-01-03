@@ -1,3 +1,4 @@
+"use client";
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
@@ -8,14 +9,20 @@ type props = {
   content: string;
   children: React.ReactNode;
 };
-export default function Example({ sizeX, content, children }: props) {
+export default function Modal({ sizeX, content, children }: props) {
   const [open, setOpen] = useState(false);
 
   const cancelButtonRef = useRef(null);
 
   return (
     <div>
-      <div onClick={() => setOpen(true)}>{children}</div>
+      <div
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
+        {children}
+      </div>
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
@@ -49,7 +56,7 @@ export default function Example({ sizeX, content, children }: props) {
                 <Dialog.Panel
                   className={`relative transform overflow-hidden rounded-lg text-left shadow-xl transition-all w-${sizeX} h-[600px] `}
                 >
-                  <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 h-full">
+                  <div className="h-full bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div className="sm:flex sm:items-center">
                       <div className="mx-auto flex w-12 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10">
                         <InformationCircleIcon
@@ -57,28 +64,11 @@ export default function Example({ sizeX, content, children }: props) {
                           aria-hidden="true"
                         />
                       </div>
-                      <div className="text-center sm:ml-4 sm:text-left flex items-center justify-center font-semibold">
+                      <div className="flex items-center justify-center text-center font-semibold sm:ml-4 sm:text-left">
                         {content}
                       </div>
                     </div>
                   </div>
-                  {/* <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <button
-                      type="button"
-                      className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                      onClick={() => setOpen(false)}
-                    >
-                      Deactivate
-                    </button>
-                    <button
-                      type="button"
-                      className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                      onClick={() => setOpen(false)}
-                      ref={cancelButtonRef}
-                    >
-                      Cancel
-                    </button>
-                  </div> */}
                 </Dialog.Panel>
               </Transition.Child>
             </div>

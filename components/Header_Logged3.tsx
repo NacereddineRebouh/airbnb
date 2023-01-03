@@ -5,6 +5,8 @@ import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import UserMenu from "./UserMenu";
 import UserMenuLogged from "./UserMenuLogged";
 import { unstable_getServerSession } from "next-auth";
+import Link from "next/link";
+
 type Props = {};
 
 export default function Header({}: Props) {
@@ -13,30 +15,33 @@ export default function Header({}: Props) {
   return (
     <div className="w-screen border-[1px] bg-white">
       {/* Desktop and tablets */}
-      <div className="grid grid-cols-[30px_40px_minmax(360px,_1fr)_265px_30px] md:grid-cols-[30px_2fr_350px_minmax(265px,_2fr)_30px] lg:grid-cols-[20px_2fr_350px_minmax(265px,_2fr)_20px] gap-0 collapse mobile:visible h-0 mobile:h-20 self-center max-w-full mx-auto">
-        <div className="relative col-start-2 flex items-center justify-left md:mt-1 md:p-2 mr-2">
+      <div className="collapse mx-auto grid h-0 max-w-[2500px] grid-cols-[30px_40px_minmax(360px,_1fr)_285px_30px] gap-0 self-center mobile:visible mobile:h-20 md:grid-cols-[30px_2fr_350px_minmax(285px,_2fr)_30px] lg:grid-cols-[70px_2fr_350px_minmax(285px,_2fr)_70px]">
+        <Link
+          href={"/"}
+          className="relative col-start-2 mr-2 flex w-32 select-none items-center justify-start md:mt-1 md:p-2"
+        >
           <Image
-            className="cursor-pointer collapse md:visible"
+            className="collapse absolute cursor-pointer md:visible"
             src={"/images/airbnb2.png"}
             alt={""}
             width={100}
             height={50}
           />
           <Image
-            className="absolute cursor-pointer w-20 collapse mobile:visible md:collapse"
+            className="collapse absolute w-9 cursor-pointer mobile:visible md:collapse"
             src={"/images/airbnb_small.png"}
             alt={""}
             width={100}
             height={50}
           />
-        </div>
-        <div className="relative col-start-4 flex flex-row gap-4 items-center justify-end mx-3 font-semibold ">
+        </Link>
+        <div className="relative col-start-4 mx-3 flex flex-row items-center justify-end gap-4 font-semibold ">
           <div className="flex flex-row items-center justify-center gap-4">
-            <div className=" rounded-full transition-colors duration-200 hover:bg-gray-100 flex items-center font-semibold cursor-pointer h-11 px-2 text-[14px] truncate">
+            <div className=" flex h-11 cursor-pointer items-center truncate rounded-full px-2 text-[14px] font-semibold transition-colors duration-200 hover:bg-gray-100">
               Airbnb your home
             </div>
-            <div className="transition-colors duration-200 h-8 w-8 hover:bg-gray-100 rounded-full flex items-center justify-center">
-              <GlobeAltIcon className="rounded-full font-bold cursor-pointer h-5" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-200 hover:bg-gray-100">
+              <GlobeAltIcon className="h-5 cursor-pointer rounded-full font-bold" />
             </div>
           </div>
           <div>

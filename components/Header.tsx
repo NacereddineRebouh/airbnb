@@ -1,20 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import {
-  MagnifyingGlassCircleIcon,
-  UserCircleIcon,
-  Bars3Icon,
-} from "@heroicons/react/24/solid";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
-import { Divider } from "@mui/material";
-import { Menu } from "@headlessui/react";
 import UserMenu from "./UserMenu";
-import UserMenuLogged from "./UserMenuLogged";
 import { BiSearch } from "react-icons/bi";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import Link from "next/link";
 import Modal_SearchBar from "./Modal_SearchBar";
-import Modal from "./Modal";
 import Modal_MobileSearchBar from "./Modal_MobileSearchBar";
 type Props = {
   placeholder?: string;

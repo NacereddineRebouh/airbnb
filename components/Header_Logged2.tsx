@@ -1,14 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import {
-  MagnifyingGlassCircleIcon,
-  UserCircleIcon,
-  Bars3Icon,
-} from "@heroicons/react/24/solid";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
-import { Divider } from "@mui/material";
-import { Menu } from "@headlessui/react";
-import UserMenu from "./UserMenu";
 import UserMenuLogged from "./UserMenuLogged";
 import Link from "next/link";
 type Props = {};

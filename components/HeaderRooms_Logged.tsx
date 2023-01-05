@@ -8,6 +8,7 @@ import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import Link from "next/link";
 import Modal_Header from "./Modal_SearchBar";
 import Modal_SearchBar_2 from "./Modal_SearchBar_2";
+import UserMenuLogged from "./UserMenuLogged";
 import Modal_MobileSearchBar from "./Modal_MobileSearchBar";
 
 type Props = {};
@@ -58,7 +59,7 @@ export default function Header({}: Props) {
             </div>
           </div>
           <div>
-            <UserMenu />
+            <UserMenuLogged />
           </div>
         </div>
       </div>

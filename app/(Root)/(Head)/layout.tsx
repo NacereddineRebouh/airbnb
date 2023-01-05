@@ -19,7 +19,7 @@ export default async function MainLayout({
 }) {
   const session = await unstable_getServerSession();
   return (
-    <html>
+    <html className="scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-400 scrollbar-thumb-rounded">
       <head key="main">
         <title key="title">Airbnb</title>
         <meta

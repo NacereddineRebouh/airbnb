@@ -45,6 +45,10 @@ export const authOptions = {
         );
         let user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
         const result2 = await result.json();
+        console.log(result2);
+        if (result2.error) {
+          console.log("error");
+        }
         // Add logic here to look up the user from the credentials supplied
         if (result2.success) {
           console.log(result2.success);

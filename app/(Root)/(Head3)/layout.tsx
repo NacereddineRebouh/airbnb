@@ -5,7 +5,7 @@ import { unstable_getServerSession } from "next-auth/next";
 import { Quicksand } from "@next/font/google";
 import FooterLogged2 from "../../../components/FooterLogged2";
 import Footer from "../../../components/Footer";
-const Qs = Quicksand({ subsets: ["latin"], variable: "--font-inter" });
+const Qs = Quicksand({ subsets: ["latin"], variable: "--font-Quicksand" });
 
 export default async function Header3Layout({
   children,

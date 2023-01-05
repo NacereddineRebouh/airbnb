@@ -50,7 +50,7 @@ export default async function Page({ params }: roomPageProps) {
       <div className="mx-auto flex max-w-[1250px] flex-col gap-y-2 px-[40px] lg:px-[70px]">
         {/* header & title */}
         <div className="flex h-28 flex-col gap-y-3 py-6">
-          <div className="text-[18px] font-semibold xs:text-xl mobile:text-3xl">
+          <div className="text-[18px] font-semibold xs:text-xl mobile:text-2xl md:text-3xl">
             {data?.property_name}
           </div>
           <div className="flex flex-row flex-wrap items-center gap-x-1 gap-y-2 text-xs font-medium mobile:text-base">
@@ -81,7 +81,7 @@ export default async function Page({ params }: roomPageProps) {
               quality={70}
               width={1000}
               height={1000}
-              className="h-auto w-auto rounded-2xl transition-all duration-300 ease-out mobile:rounded-r-none mobile:group-hover:scale-105"
+              className="aspect-square rounded-2xl transition-all duration-300 ease-out mobile:rounded-r-none mobile:group-hover:scale-105"
             />
             <div className="absolute top-0 left-0 aspect-square h-auto w-full rounded-2xl bg-black/10 opacity-0 transition-all duration-300 ease-out mobile:rounded-r-none mobile:group-hover:opacity-100"></div>
           </div>
@@ -138,7 +138,7 @@ export default async function Page({ params }: roomPageProps) {
           </div>
         </div>
         {/* description */}
-        <div className="grid grid-cols-1 mobile:grid-cols-[3fr_2fr] ">
+        <div className="grid grid-cols-1 mobile:grid-cols-[1fr_1fr] md:grid-cols-[3fr_2fr]">
           {/* house desc */}
           <div className="flex flex-col divide-y">
             <div className="mb-5 mt-2 flex flex-row items-center justify-between mobile:mb-7 mobile:mt-7 ">

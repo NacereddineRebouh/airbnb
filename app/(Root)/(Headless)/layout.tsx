@@ -2,7 +2,6 @@ import "../../../styles/globals.css";
 import SessionProvider from "../../../components/providers/SessionProvider";
 import { unstable_getServerSession } from "next-auth/next";
 // import {useRouter} from "next/navigation"
-import { redirect } from "next/navigation";
 import { Quicksand } from "@next/font/google";
 const Qs = Quicksand({ subsets: ["latin"], variable: "--font-inter" });
 

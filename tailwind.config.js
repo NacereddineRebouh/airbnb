@@ -49,6 +49,18 @@ module.exports = {
             opacity:.9
           },
         },
+        
+        Jump:{
+          '0%, 100%' :{
+            transform: 'translateY(10px)',
+      
+          },
+          '50%' :{
+            transform: 'translateY(8px)',
+      
+          },
+
+        },
         customFade:{
           '0%, 100%' :{
             opacity: 1
@@ -89,7 +101,8 @@ module.exports = {
       'ping-nofade': 'customFade 2.2s linear infinite',
       'pulseLong':'pulse2 5s ease-in-out infinite',
       'pulseC':'pulse2 5s ease-in infinite',
-      'Hover':'bounce2 6s ease-in-out infinite'
+      'Hover':'bounce2 6s ease-in-out infinite',
+      'Jump':'Jump 2s ease-in-out infinite'
     },
     },
   },

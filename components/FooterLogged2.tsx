@@ -40,7 +40,7 @@ export default function Footer({}: Props) {
         settrips(false);
         setmessage(false);
         break;
-      case "/explore":
+      case "/":
         setexplore(true);
         setwishlists(false);
         setaccount(false);

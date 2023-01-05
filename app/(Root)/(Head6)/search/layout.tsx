@@ -27,9 +27,7 @@ export default async function RootLayout({
         <section id="category">
           <Categories />
         </section>
-        <footer id="footer" className="fixed bottom-[0px] z-50 self-end">
-          {session ? <FooterLogged /> : <Footer />}
-        </footer>
+
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>

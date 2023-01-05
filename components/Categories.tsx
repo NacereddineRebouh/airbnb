@@ -201,41 +201,41 @@ export default function Categories() {
             />
             <CategoryIcons
               icon={<GiIsland className="h-6 w-6" />}
-              title={"Island"}
+              title={"Island2"}
             />
 
             <CategoryIcons
               icon={<HomeModernIcon className="h-6 w-6" />}
-              title={"Tiny homes"}
+              title={"Tiny homes3"}
             />
 
             <CategoryIcons
               icon={<GiPalmTree className="h-6 w-6" />}
-              title={"Tropics"}
+              title={"Tropics2"}
             />
 
             <CategoryIcons
               icon={<MdHouseboat className="h-6 w-6" />}
-              title={"HouseBoats"}
+              title={"HouseBoats2"}
             />
             <CategoryIcons
               icon={<GiIsland className="h-6 w-6" />}
-              title={"Island"}
+              title={"Island3"}
             />
 
             <CategoryIcons
               icon={<HomeModernIcon className="h-6 w-6" />}
-              title={"Tiny homes"}
+              title={"Tiny homes2"}
             />
 
             <CategoryIcons
               icon={<GiPalmTree className="h-6 w-6" />}
-              title={"Tropics"}
+              title={"Tropics3"}
             />
 
             <CategoryIcons
               icon={<MdHouseboat className="h-6 w-6" />}
-              title={"HouseBoats"}
+              title={"HouseBoats3"}
             />
 
             <CategoryIcons
@@ -424,6 +424,44 @@ export default function Categories() {
             <CategoryIcons
               icon={<GiPalmTree className="h-6 w-6" />}
               title={"Tropics"}
+            />
+
+            <CategoryIcons
+              icon={<MdHouseboat className="h-6 w-6" />}
+              title={"HouseBoats"}
+            />
+            <CategoryIcons
+              icon={<GiIsland className="h-6 w-6" />}
+              title={"Island2"}
+            />
+
+            <CategoryIcons
+              icon={<HomeModernIcon className="h-6 w-6" />}
+              title={"Tiny homes3"}
+            />
+
+            <CategoryIcons
+              icon={<GiPalmTree className="h-6 w-6" />}
+              title={"Tropics"}
+            />
+
+            <CategoryIcons
+              icon={<MdHouseboat className="h-6 w-6" />}
+              title={"HouseBoats2"}
+            />
+            <CategoryIcons
+              icon={<GiIsland className="h-6 w-6" />}
+              title={"Island3"}
+            />
+
+            <CategoryIcons
+              icon={<HomeModernIcon className="h-6 w-6" />}
+              title={"Tiny homes2"}
+            />
+
+            <CategoryIcons
+              icon={<GiPalmTree className="h-6 w-6" />}
+              title={"Tropics2"}
             />
 
             <CategoryIcons

@@ -10,6 +10,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Card from "../../../../components/Card";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
+import FooterLogged from "../../../../components/FooterLogged";
+import Footer from "../../../../components/Footer";
 
 type Props = {
   searchParams?: {
@@ -38,14 +40,14 @@ export default function Search() {
   const searchParams = useSearchParams();
   const { data: session, status } = useSession();
   let startDate = "";
-  if (searchParams.get("startDate") !== "") {
+  if (searchParams.get("startDate") && searchParams.get("startDate") !== "") {
     startDate = format(
       new Date(searchParams.get("startDate") + "") ?? "2023-01-01",
       "dd MMMM"
     );
   }
   let endDate = "";
-  if (searchParams.get("startDate") !== "") {
+  if (searchParams.get("endDate") && searchParams.get("endDate") !== "") {
     endDate = format(
       new Date(searchParams.get("endDate") + "") ?? "2023-01-01",
       "dd MMMM"
@@ -132,6 +134,9 @@ export default function Search() {
           </InfiniteScroll>
         </div>
       </section>
+      <footer id="footer" className="fixed bottom-[0px] z-50 self-end">
+        {session ? <FooterLogged data={data} /> : <Footer data={data} />}
+      </footer>
     </div>
   );
 }

@@ -2,14 +2,29 @@
 import React, { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
-
-type props = {
-  sizeX: string;
-  sizeY: string;
-  content: string;
-  children: React.ReactNode;
+import LocationMap from "./LocationMap";
+import { XMarkIcon } from "@heroicons/react/24/solid";
+type room = {
+  id: number;
+  property_name: string;
+  type: string;
+  guests: number;
+  bedrooms: number;
+  bathrooms: number;
+  veds: number;
+  location: string;
+  long: string;
+  lat: string;
+  images: string;
+  price: number;
+  distance: number;
 };
-export default function Modal({ sizeX, content, children }: props) {
+type props = {
+  children: React.ReactNode;
+  sizeY: string;
+  data?: room[];
+};
+export default function Modal({ children, data, sizeY }: props) {
   const [open, setOpen] = useState(false);
 
   const cancelButtonRef = useRef(null);
@@ -41,32 +56,29 @@ export default function Modal({ sizeX, content, children }: props) {
           >
             <div className="fixed inset-0 bg-black bg-opacity-25 transition-opacity" />
           </Transition.Child>
-
-          <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-end justify-center text-center">
+          <div className="fixed inset-0 z-10">
+            <div className="flex min-h-full items-end justify-center text-center ">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-full"
+                enterFrom="opacity-0 translate-y-[900px]"
                 enterTo="opacity-100 translate-y-0"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 translate-y-full "
+                leaveTo="opacity-0 translate-y-[900px] "
               >
                 <Dialog.Panel
-                  className={`relative transform overflow-hidden rounded-lg text-left shadow-xl transition-all w-${sizeX} h-[600px] `}
+                  className={`relative h-[800px] w-full transform overflow-hidden rounded-lg text-left shadow-xl transition-all `}
                 >
-                  <div className="h-full bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div className="sm:flex sm:items-center">
-                      <div className="mx-auto flex w-12 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10">
-                        <InformationCircleIcon
-                          className="h-6 w-6 text-emerald-300"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <div className="flex items-center justify-center text-center font-semibold sm:ml-4 sm:text-left">
-                        {content}
-                      </div>
+                  <div
+                    className="absolute top-0 right-0 z-10 cursor-pointer p-2"
+                    onClick={() => setOpen(false)}
+                  >
+                    <XMarkIcon className="h-6 w-6"></XMarkIcon>
+                  </div>
+                  <div className="h-full items-center justify-center bg-white p-7">
+                    <div className="flex h-[100%] w-full items-center justify-center overflow-hidden rounded-xl">
+                      <LocationMap data={data} />
                     </div>
                   </div>
                 </Dialog.Panel>

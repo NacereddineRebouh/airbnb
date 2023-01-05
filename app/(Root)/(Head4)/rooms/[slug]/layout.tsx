@@ -1,8 +1,9 @@
 import { Quicksand } from "@next/font/google";
 import { unstable_getServerSession } from "next-auth";
 import HeaderRooms from "../../../../../components/HeaderRooms";
+import HeaderRooms_Logged from "../../../../../components/HeaderRooms_Logged";
 import "../../../../../styles/globals.css";
-const Qs = Quicksand({ subsets: ["latin"], variable: "--font-inter" });
+const Qs = Quicksand({ subsets: ["latin"], variable: "--font-Quicksand" });
 
 export default async function RootLayout({
   children,
@@ -21,7 +22,7 @@ export default async function RootLayout({
       </head>
       <body className={Qs.className}>
         <header id="header" className="z-20">
-          {session ? <HeaderRooms /> : <HeaderRooms />}
+          {session ? <HeaderRooms_Logged /> : <HeaderRooms />}
         </header>
         <section>{children}</section>
       </body>

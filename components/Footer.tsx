@@ -11,10 +11,28 @@ import {
 import Link from "next/link";
 import MyModal from "./Modal";
 import { usePathname } from "next/navigation";
+import Modal_map from "./Modal_map";
 
-type Props = {};
+type room = {
+  id: number;
+  property_name: string;
+  type: string;
+  guests: number;
+  bedrooms: number;
+  bathrooms: number;
+  veds: number;
+  location: string;
+  long: string;
+  lat: string;
+  images: string;
+  price: number;
+  distance: number;
+};
+type Props = {
+  data?: room[];
+};
 
-export default function Footer({}: Props) {
+export default function Footer({ data }: Props) {
   const [login, setlogin] = useState(false);
   const [wishlists, setwishlists] = useState(false);
   const [explore, setexplore] = useState(false);
@@ -33,7 +51,7 @@ export default function Footer({}: Props) {
         setexplore(false);
         setlogin(false);
         break;
-      case "/explore":
+      case "/":
         setexplore(true);
         setwishlists(false);
         setlogin(false);
@@ -53,10 +71,12 @@ export default function Footer({}: Props) {
   return (
     <div className="flex w-screen flex-col items-center justify-center gap-4 mobile:gap-10">
       {/* show map */}
-      <div className="flex h-8 w-auto cursor-pointer flex-row items-center justify-center gap-2 rounded-full bg-zinc-800 px-3 text-xs font-medium text-white transition-all hover:scale-105 hover:shadow-md mobile:h-12 mobile:text-base">
-        Show map
-        <MapIcon className="h-4 w-4 mobile:h-5 mobile:w-5" />
-      </div>
+      <Modal_map data={data} sizeY={"[800px]"}>
+        <div className=" flex h-8 w-auto cursor-pointer flex-row items-center justify-center gap-2 rounded-full bg-zinc-800 px-3 text-xs font-medium text-white transition-all hover:scale-105 hover:shadow-md mobile:h-12 mobile:text-base">
+          Show map
+          <MapIcon className="h-4 w-4 mobile:h-5 mobile:w-5" />
+        </div>
+      </Modal_map>
       <div className="w-screen border-[1px] bg-white">
         {/* desktop and tables */}
         <div className="mx-auto max-w-[2500px]">

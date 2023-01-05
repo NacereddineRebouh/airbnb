@@ -10,6 +10,7 @@ import Header_Logged from "../../../components/Header_Logged";
 import SessionProvider from "../../../components/providers/SessionProvider";
 import { Quicksand } from "@next/font/google";
 import FooterLogged from "../../../components/FooterLogged";
+import { AnalyticsWrapper } from "../../../components/analytics";
 const Qs = Quicksand({ subsets: ["latin"], variable: "--font-inter" });
 
 export default async function MainLayout({
@@ -45,6 +46,7 @@ export default async function MainLayout({
         <section className="z-0 mx-auto mt-[200px] mb-20" id="Content">
           <SessionProvider>{children}</SessionProvider>
         </section>
+        <AnalyticsWrapper />
       </body>
     </html>
   );

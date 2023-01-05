@@ -70,7 +70,9 @@ export default function Search() {
     size,
     error,
   } = usePagination<room>(
-    "http://localhost:8000/api/rooms/search/" + searchParams.get("location")
+    process.env.NEXT_PUBLIC_api_url +
+      "/api/rooms/search/" +
+      searchParams.get("location")
   );
   return (
     <div>

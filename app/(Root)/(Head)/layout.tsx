@@ -27,6 +27,13 @@ export default async function MainLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1"
         />
+        <meta property="og:title" content="Airbnb" />
+        <meta
+          property="og:description"
+          content="Vacation Homes & Condo Rentals - Airbnb"
+        />
+        <meta property="og:url" content="https://airbnb-ten-zeta.vercel.app" />
+        <meta property="og:type" content="website" />
       </head>
 
       <body className={` ${Qs.className}`}>

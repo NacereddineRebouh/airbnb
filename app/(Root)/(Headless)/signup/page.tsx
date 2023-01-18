@@ -41,6 +41,7 @@ export default function page({}: Props) {
         }),
         headers: {
           Accept: "application/json",
+          origin: "https://airbnb-ten-zeta.vercel.app",
         },
       })
         .then(async (response) => {

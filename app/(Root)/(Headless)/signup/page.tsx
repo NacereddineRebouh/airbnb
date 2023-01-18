@@ -67,7 +67,7 @@ export default function page({}: Props) {
       //   });
 
       try {
-        const url = "https://rapidapi.com/learn/api/rest";
+        const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/register";
         const data = {
           name,
           email,

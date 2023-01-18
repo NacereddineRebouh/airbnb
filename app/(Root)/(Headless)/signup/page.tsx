@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { BsFillCheckCircleFill, BsFillXCircleFill } from "react-icons/bs";
 type Props = {};
+import axios from "axios";
 
 export default function page({}: Props) {
   const [Success, setSuccess] = useState(false);
@@ -32,7 +33,7 @@ export default function page({}: Props) {
         email + " " + password + " " + passwordConfirmationRef
       );
 
-      fetch(process.env.NEXT_PUBLIC_BACKEND_API + "/api/register", {
+      fetch(process.env.NEXT_PUBLIC_BACKEND_API + "/api/register2", {
         method: "POST",
         body: JSON.stringify({
           name,
@@ -42,6 +43,8 @@ export default function page({}: Props) {
         headers: {
           Accept: "application/json",
           origin: "https://airbnb-ten-zeta.vercel.app",
+
+          "Content-Type": "application/json",
         },
       })
         .then(async (response) => {

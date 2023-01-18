@@ -33,12 +33,13 @@ export default function page({}: Props) {
         email + " " + password + " " + passwordConfirmationRef
       );
 
-      fetch(process.env.NEXT_PUBLIC_BACKEND_API + "/api/register2", {
+      fetch(process.env.NEXT_PUBLIC_BACKEND_API + "/api/register", {
         method: "POST",
         body: JSON.stringify({
           name,
           email,
           password,
+          password_confirmation,
         }),
         headers: {
           Accept: "application/json",

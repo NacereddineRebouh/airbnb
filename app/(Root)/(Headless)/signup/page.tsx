@@ -38,11 +38,9 @@ export default function page({}: Props) {
           name,
           email,
           password,
-          password_confirmation,
         }),
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json",
         },
       })
         .then(async (response) => {

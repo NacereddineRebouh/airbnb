@@ -215,7 +215,11 @@ export default function page({}: Props) {
             </button>
           </div>
 
-          <div className="mx-auto mt-6 text-center text-sm font-medium text-red-600">
+          <div
+            className={`mx-auto mt-6 text-center text-sm font-medium text-red-600 opacity-0 transition-all duration-300 ${
+              errors != "" ? "opacity-100" : "opacity-0"
+            }`}
+          >
             {errors}
           </div>
         </form>

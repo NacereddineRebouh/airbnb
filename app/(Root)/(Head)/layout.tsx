@@ -58,7 +58,7 @@ export default async function MainLayout({
         <section className="z-0 mx-auto mt-[200px] mb-20" id="Content">
           <SessionProvider>{children}</SessionProvider>
         </section>
-        <AnalyticsWrapper />
+        {/* <AnalyticsWrapper /> */}
       </body>
     </html>
   );

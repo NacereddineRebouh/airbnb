@@ -66,45 +66,43 @@ export default function page({}: Props) {
       //     setSuccess(false);
       //   });
 
-      try {
-        const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/register";
-        const data = {
-          name,
-          email,
-          password,
-          password_confirmation,
-        };
-        // Specifying headers in the config object
-        const config = { "content-type": "application/json" };
-        const response = await axios.post(url, data, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            accept: "application/json",
-          },
-        });
-        // console.log(response);
-        console.log("0");
-        const result2 = response.data;
-        console.log(result2);
-        console.log("1");
-        console.log(result2.success);
-        console.log("2");
-        if (result2.success) {
-          setSuccess(true);
-          setFailure(false);
-          router.push("/login");
-        } else {
-          setFailure(true);
-          setSuccess(false);
-        }
-      } catch (error) {
-        console.log("3");
+      // try {
+      const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/register";
+      const data = {
+        name,
+        email,
+        password,
+        password_confirmation,
+      };
+      // Specifying headers in the config object
+      const config = { "content-type": "application/json" };
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          accept: "application/json",
+        },
+      });
+      // console.log(response);
+      console.log("0");
+      const result2 = response.data;
+      console.log(result2);
+      console.log("1");
+      console.log(result2.success);
+      console.log("2");
+      if (result2.success) {
+        setSuccess(true);
+        setFailure(false);
+        router.push("/login");
+      } else {
         setFailure(true);
         setSuccess(false);
-        console.log("error::", typeof error);
-        console.error(error);
-        console.log("4");
       }
+      // } catch (error) {
+      //   console.log("3");
+      //   setFailure(true);
+      //   setSuccess(false);
+      //   console.log(error);
+      // }
     }
   };
 

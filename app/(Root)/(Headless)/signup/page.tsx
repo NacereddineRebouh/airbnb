@@ -82,7 +82,7 @@ export default function page({}: Props) {
             accept: "application/json",
           },
         });
-        console.log(response);
+        // console.log(response);
         const result2 = response.data;
         console.log(result2.success);
         if (result2.success) {
@@ -96,6 +96,7 @@ export default function page({}: Props) {
       } catch (error) {
         setFailure(true);
         setSuccess(false);
+        console.log("error::", typeof error);
         console.error(error);
       }
     }

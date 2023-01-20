@@ -9,6 +9,9 @@ import axios from "axios";
 export default function page({}: Props) {
   const [Success, setSuccess] = useState(false);
   const [Failure, setFailure] = useState(false);
+
+  const [errors, seterrors] = useState("");
+
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -59,51 +62,58 @@ export default function page({}: Props) {
       //     setSuccess(false);
       //   });
 
-      // try {
-      const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/register";
-      const data = {
-        name: name,
-        email: email,
-        password: password,
-        password_confirmation: password_confirmation,
-      };
-      let formData = new FormData(); //formdata object
+      try {
+        const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/register";
+        const data = {
+          name: name,
+          email: email,
+          password: password,
+          password_confirmation: password_confirmation,
+        };
+        let formData = new FormData(); //formdata object
 
-      formData.append("name", name); //append the values with key, value pair
-      formData.append("email", email);
-      formData.append("password", password);
-      formData.append("password_confirmation", password_confirmation);
+        formData.append("name", name); //append the values with key, value pair
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("password_confirmation", password_confirmation);
 
-      // Specifying headers in the config object
-      const config = { "content-type": "application/json" };
-      const response = await axios.post(url, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          // "Content-Type": "application/x-www-form-urlencoded",
-          accept: "application/json",
-        },
-      });
-      // console.log(response);
-      console.log("0");
-      const result2 = response.data;
-      console.log(result2);
-      console.log("1");
-      console.log(result2.success);
-      console.log("2");
-      if (result2.success) {
-        setSuccess(true);
-        setFailure(false);
-        router.push("/login");
-      } else {
+        // Specifying headers in the config object
+        const config = { "content-type": "application/json" };
+        const response = await axios.post(url, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            // "Content-Type": "application/x-www-form-urlencoded",
+            accept: "application/json",
+          },
+        });
+        // console.log(response);
+        console.log("0");
+        const result2 = response.data;
+        console.log(result2);
+        console.log("1");
+        console.log(result2.success);
+        console.log("2");
+        if (result2.success) {
+          setSuccess(true);
+          setFailure(false);
+          router.push("/login");
+        } else {
+          console.log(result2.errors);
+          setFailure(true);
+          setSuccess(false);
+        }
+      } catch (error) {
         setFailure(true);
         setSuccess(false);
+
+        if (axios.isAxiosError(error) && error.response) {
+          console.log(error.response.data);
+          seterrors(error.response.data.message);
+        } else {
+          console.error(error);
+        }
+        console.log(error);
       }
-      // } catch (error) {
-      //   console.log("3");
-      //   setFailure(true);
-      //   setSuccess(false);
-      //   console.log(error);
-      // }
     }
   };
 
@@ -125,7 +135,7 @@ export default function page({}: Props) {
               required
               value={name}
               onChange={(e) => setname(e.currentTarget.value)}
-              placeholder={"Username"}
+              placeholder={"Name"}
             />
           </div>
           <div className="mt-4">
@@ -202,6 +212,10 @@ export default function page({}: Props) {
               </div>
               <div className="mx-auto">Signup</div>
             </button>
+          </div>
+
+          <div className="mx-auto text-sm font-medium text-red-600">
+            {errors}
           </div>
         </form>
       </div>

@@ -69,16 +69,17 @@ export default function page({}: Props) {
       // try {
       const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/register";
       const data = {
-        name,
-        email,
-        password,
-        password_confirmation,
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: password_confirmation,
       };
       // Specifying headers in the config object
       const config = { "content-type": "application/json" };
       const response = await axios.post(url, data, {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
+          // "Content-Type": "application/x-www-form-urlencoded",
           accept: "application/json",
         },
       });

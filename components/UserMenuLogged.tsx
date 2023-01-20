@@ -15,32 +15,6 @@ type Props = {};
 
 export default function UserMenuLogged({}: Props) {
   const router = useRouter();
-
-  // const logOut = async () => {
-  //   const cookies = new Cookies();
-  //   const token = cookies.get("accessToken");
-  //   const res = await fetch(`${process.env.NEXT_PUBLIC_api_url}/api/logout`, {
-  //     method: "POST",
-  //     headers: new Headers({
-  //       accept: "application/json",
-  //       Credentials: "include",
-  //       Authorization: `Bearer ${token}`,
-  //     }),
-  //   })
-  //     .then(async (response) => {
-  //       const data = await response.json();
-
-  //       if (data.message === "Logged out successfully") {
-  //         const cookies = new Cookies();
-  //         cookies.remove("accessToken");
-  //         console.log(data.message);
-  //         router.refresh();
-  //       } else {
-  //         router.push("/");
-  //       }
-  //     })
-  //     .catch(() => console.log("Failed"));
-  // };
   return (
     <div>
       <Menu as="div" className="relative z-50">

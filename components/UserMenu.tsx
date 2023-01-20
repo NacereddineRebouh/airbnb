@@ -35,13 +35,14 @@ export default function UserMenu({}: Props) {
               <div className="mb-2">
                 <Menu.Item>
                   {({ active }) => (
-                    <div
+                    <Link
+                      href={"/signup"}
                       className={`${
                         active ? "bg-gray-100" : ""
                       } group flex w-full cursor-pointer items-center px-4 py-2 text-sm`}
                     >
                       Sign up
-                    </div>
+                    </Link>
                   )}
                 </Menu.Item>
                 <Menu.Item>

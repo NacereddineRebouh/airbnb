@@ -43,10 +43,8 @@ export default function page({}: Props) {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
+          "Content-Type": "multipart/form-data",
           Accept: "application/json",
-          origin: "https://airbnb-ten-zeta.vercel.app",
-
-          "Content-Type": "application/json",
         },
       })
         .then(async (response) => {

@@ -33,71 +33,71 @@ export default function page({}: Props) {
         email + " " + password + " " + password_confirmation
       );
 
+      // fetch(process.env.NEXT_PUBLIC_BACKEND_API + "/api/register", {
+      //   method: "POST",
+      //   body: JSON.stringify(data),
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //     Accept: "application/json",
+      //   },
+      // })
+      //   .then(async (response) => {
+      //     const result2 = await response.json();
+      //     console.log(JSON.stringify(result2));
+      //     console.log(result2.success);
+      //     if (result2.success) {
+      //       setSuccess(true);
+      //       setFailure(false);
+      //       router.push("/login");
+      //     } else {
+      //       setFailure(true);
+      //       setSuccess(false);
+      //     }
+      //   })
+      //   .catch(() => {
+      //     setFailure(true);
+      //     setSuccess(false);
+      //   });
+
+      // try {
+      const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/register";
       const data = {
         name: name,
         email: email,
         password: password,
         password_confirmation: password_confirmation,
       };
-      fetch(process.env.NEXT_PUBLIC_BACKEND_API + "/api/register", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Accept: "application/json",
-        },
-      })
-        .then(async (response) => {
-          const result2 = await response.json();
-          console.log(JSON.stringify(result2));
-          console.log(result2.success);
-          if (result2.success) {
-            setSuccess(true);
-            setFailure(false);
-            router.push("/login");
-          } else {
-            console.log(result2?.errors);
-            setFailure(true);
-            setSuccess(false);
-          }
-        })
-        .catch(() => {
-          setFailure(true);
-          setSuccess(false);
-        });
+      let formData = new FormData(); //formdata object
 
-      // try {
-      // const url = process.env.NEXT_PUBLIC_BACKEND_API + "/api/register";
-      // const data = {
-      //   name: name,
-      //   email: email,
-      //   password: password,
-      //   password_confirmation: password_confirmation,
-      // };
-      // // Specifying headers in the config object
-      // const config = { "content-type": "application/json" };
-      // const response = await axios.post(url, data, {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     // "Content-Type": "application/x-www-form-urlencoded",
-      //     accept: "application/json",
-      //   },
-      // });
-      // // console.log(response);
-      // console.log("0");
-      // const result2 = response.data;
-      // console.log(result2);
-      // console.log("1");
-      // console.log(result2.success);
-      // console.log("2");
-      // if (result2.success) {
-      //   setSuccess(true);
-      //   setFailure(false);
-      //   router.push("/login");
-      // } else {
-      //   setFailure(true);
-      //   setSuccess(false);
-      // }
+      formData.append("name", name); //append the values with key, value pair
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("password_confirmation", password_confirmation);
+
+      // Specifying headers in the config object
+      const config = { "content-type": "application/json" };
+      const response = await axios.post(url, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          // "Content-Type": "application/x-www-form-urlencoded",
+          accept: "application/json",
+        },
+      });
+      // console.log(response);
+      console.log("0");
+      const result2 = response.data;
+      console.log(result2);
+      console.log("1");
+      console.log(result2.success);
+      console.log("2");
+      if (result2.success) {
+        setSuccess(true);
+        setFailure(false);
+        router.push("/login");
+      } else {
+        setFailure(true);
+        setSuccess(false);
+      }
       // } catch (error) {
       //   console.log("3");
       //   setFailure(true);

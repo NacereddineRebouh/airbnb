@@ -97,6 +97,7 @@ export default function page({}: Props) {
           setSuccess(true);
           setFailure(false);
           router.push("/login");
+          seterrors("");
         } else {
           console.log(result2.errors);
           setFailure(true);
@@ -214,7 +215,7 @@ export default function page({}: Props) {
             </button>
           </div>
 
-          <div className="mx-auto text-sm font-medium text-red-600">
+          <div className="mx-auto mt-6 text-center text-sm font-medium text-red-600">
             {errors}
           </div>
         </form>

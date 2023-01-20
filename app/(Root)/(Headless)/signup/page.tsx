@@ -120,6 +120,7 @@ export default function page({}: Props) {
 
   return (
     <section className="flex h-screen w-screen items-center overflow-hidden bg-gray-50 pb-28 text-sm sm:text-base">
+      <title key="title">Signup</title>
       <div className="mx-auto w-full p-8 sm:w-[600px]">
         <h2 className="pb-6 text-center text-4xl font-bold text-rose-500">
           Airbnb
@@ -217,7 +218,7 @@ export default function page({}: Props) {
 
           <div
             className={`mx-auto mt-6 text-center text-sm font-medium text-red-600 opacity-0 transition-all duration-300 ${
-              errors != "" ? "opacity-100" : "opacity-0"
+              errors ? "opacity-100" : "opacity-0"
             }`}
           >
             {errors}

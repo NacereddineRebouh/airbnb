@@ -81,6 +81,7 @@ export default function Login({}: Props) {
 
   return (
     <section className="flex h-screen w-screen items-center bg-gray-50 text-sm sm:text-base">
+      <title key="title">Login</title>
       <div className="mx-auto w-full p-8 sm:w-[600px]">
         <h2 className="text-center text-2xl font-semibold text-gray-700">
           Airbnb

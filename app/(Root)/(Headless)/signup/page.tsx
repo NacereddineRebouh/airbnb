@@ -33,19 +33,20 @@ export default function page({}: Props) {
         email + " " + password + " " + password_confirmation
       );
 
+      const data = {
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: password_confirmation,
+      };
       fetch(process.env.NEXT_PUBLIC_BACKEND_API + "/api/register", {
         method: "POST",
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          password: password,
-          password_confirmation: password_confirmation,
-        }),
+        body: JSON.stringify(data),
         headers: {
           Accept: "application/json",
           origin: "https://airbnb-ten-zeta.vercel.app",
 
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
       })
         .then(async (response) => {
@@ -57,6 +58,7 @@ export default function page({}: Props) {
             setFailure(false);
             router.push("/login");
           } else {
+            console.log(result2?.errors);
             setFailure(true);
             setSuccess(false);
           }

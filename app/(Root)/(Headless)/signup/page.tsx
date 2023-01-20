@@ -43,7 +43,7 @@ export default function page({}: Props) {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/x-www-form-urlencoded",
           Accept: "application/json",
         },
       })

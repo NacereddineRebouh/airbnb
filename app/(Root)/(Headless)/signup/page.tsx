@@ -83,8 +83,12 @@ export default function page({}: Props) {
           },
         });
         // console.log(response);
+        console.log("0");
         const result2 = response.data;
+        console.log(result2);
+        console.log("1");
         console.log(result2.success);
+        console.log("2");
         if (result2.success) {
           setSuccess(true);
           setFailure(false);
@@ -94,10 +98,12 @@ export default function page({}: Props) {
           setSuccess(false);
         }
       } catch (error) {
+        console.log("3");
         setFailure(true);
         setSuccess(false);
         console.log("error::", typeof error);
         console.error(error);
+        console.log("4");
       }
     }
   };

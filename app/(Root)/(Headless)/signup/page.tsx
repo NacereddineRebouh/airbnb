@@ -78,7 +78,7 @@ export default function page({}: Props) {
         const config = { "content-type": "application/json" };
         const response = await axios.post(url, data, {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
             accept: "application/json",
           },
         });

@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Airbnb Clone
 
-## Getting Started
+A clone of the popular Airbnb platform, built using Next.js, NextAuth, TypeScript, Tailwind CSS, and various React libraries for the frontend, and Laravel PHP for the backend.
 
-First, run the development server:
+## Frontend Technologies
+- Next.js
+- NextAuth
+- TypeScript
+- Tailwind CSS
+- React Responsive Carousel
+- MapLibre GL
+- React Slick
+- React Date Range
+- Headless UI
+- HeroIcons
+- FortAwesome
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Backend Technologies
+- Laravel PHP
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prerequisites
+- Node.js
+- npm
+- Laravel PHP
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Installation and Setup
+1. Clone this repository: 'git clone https://github.com/YOUR_USERNAME/airbnb-clone.git'
+2. Navigate to the frontend directory and install the dependencies: `cd airbnb-clone/frontend` , `npm install`
+3. Navigate to the backend directory and install the dependencies: `cd airbnb-clone/backend` , `composer install`
+4. Start the frontend and backend servers: `in the frontend directory: npm run dev` `in the backend directory: php artisan serve`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Screenshots
+#Shot 1:
+![Alt Text](https://res.cloudinary.com/dttrs30gt/image/upload/v1675620702/Airbnb/Houses/1.3_Home_rjstws.png)
+#Shot 2:
+![Alt Text](https://res.cloudinary.com/dttrs30gt/image/upload/v1675620720/Airbnb/Houses/1.4_SearchRes_d7sjam.png)
+#Shot 3:
+![Alt Text](https://res.cloudinary.com/dttrs30gt/image/upload/v1675620694/Airbnb/Houses/1.5_RoomDetails_kb5jds.png)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Demo
+Demo here: https://airbnb-ten-zeta.vercel.app/
